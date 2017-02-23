@@ -1,0 +1,4 @@
+services:
+#    m2l_pages.example:
+#        class: M2L\PagesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
