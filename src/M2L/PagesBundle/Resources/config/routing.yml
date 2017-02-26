@@ -1,0 +1,3 @@
+m2l_pages_home:
+    path:    /
+    defaults:    {_controller: M2LPagesBundle:Main:index}
