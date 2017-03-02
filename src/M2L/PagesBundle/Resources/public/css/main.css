@@ -1,0 +1,61 @@
+body 
+{
+  background-color: #FFFFFF;
+  border: solid transparent #000 1px;
+  color: #FFF;
+  margin: 0 0;
+  padding-top: 50px;
+}
+
+
+h1
+{
+  font-weight: bolder;
+  text-align: center;
+}
+
+
+#wrapper 
+{
+  width: auto;
+  height: auto;
+  border: solid transparent #000 1px;
+  background-color: #FFFFFF;
+  margin: 0 0;
+}
+
+
+section
+{
+  width: 400px;
+  height: auto;
+  position : absolute;
+  background-color: #FFFFFF;
+  margin: 10px auto;
+}
+
+
+form label 
+{
+    float: left;
+    width: 200px;
+    margin: 3px 0px 0px 0px;
+}
+
+
+form input 
+{
+    margin: 3px 3px 0px 0px;
+    border: 1px #999 solid;
+}
+
+form .erreur 
+{
+    color: #900;
+}
+
+form .succes 
+{
+    color: #090;
+}
+

@@ -1,0 +1,3 @@
+m2_l_user_homepage:
+    path:     /
+    defaults: { _controller: M2LUserBundle:Default:index }

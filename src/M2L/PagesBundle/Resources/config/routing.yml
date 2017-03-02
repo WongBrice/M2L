@@ -1,3 +1,6 @@
 m2l_pages_home:
-    path:    /
-    defaults:    {_controller: M2LPagesBundle:Main:index}
+    path:    /{page}
+    defaults:
+        _controller: M2LPagesBundle:Main:index
+    requirements:
+        page: \d*
