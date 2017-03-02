@@ -1,20 +1,127 @@
-{% extends "M2LPagesBundle::layout.html.twig" %}
+{% extends 'M2LPagesBundle::layout.html.twig' %}
 
 {% block body %}
 
-  {% for key, message in app.session.flashbag.all() %}
+    <body>
+        <header>
+            <img src="{{ asset('bundles/m2lpages/img/Logo01.png') }}" style="width: 100%; display: block;"/>
+        </header>
 
-    <div class="alert alert-{{ key }}">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('m2l_pages_home') }}">Accueil</a></li>
+                        <li><a href="{{ path('m2l_pages_login') }}">Se connecter</a></li>
+                        <li class="active"><a href="{{ path('m2l_pages_register') }}">S'inscrire</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-      {{ message|trans({}, 'FOSUserBundle') }}
+        <div class="jumbotron">
+            <div class="container">
+                <h2>S'inscrire à FREDI : </h2>
+                <form method="POST" name="inscription" action="inscription">
+                    <label for="nom">Votre Nom : <span class="requis">*</span></label>
+                    <input type="text" name="nom" id="nom" placeholder="Votre nom"/><br/>
+                    <span class="erreur">${form.erreurs['nom']}</span><br />
+                    <label for="prenom">Votre Prénom : <span class="requis">*</span></label>
+                    <input type="text" name="prenom" id="prenom" placeholder="Votre prénom"/><br/>
+                    <span class="erreur">${form.erreurs['prenom']}</span><br />
+                    <label for="adresse">Votre Adresse : <span class="requis">*</span></label>
+                    <input type="text" name="adresse" id="adresse" placeholder="Votre adresse"/><br/>
+                    <span class="erreur">${form.erreurs['adresse']}</span><br />
+                    <label for="ville">Votre Ville: <span class="requis">*</span></label>
+                    <input type="text" name="ville" id="ville" placeholder="Votre ville"/><br/>
+                    <span class="erreur">${form.erreurs['ville']}</span><br />
+                    <label for="cp">Votre Code postal : <span class="requis">*</span></label>
+                    <input type="text" name="cp" id="cp" placeholder="Votre code postal"/><br/>
+                    <span class="erreur">${form.erreurs['cp']}</span><br />
+                    <label for="email">Votre Login (Email) : <span class="requis">*</span></label>
+                    <input type="text" name="email" id="email" placeholder="Votre login"/><br/>
+                    <span class="erreur">${form.erreurs['email']}</span><br />
+                    <label for="Ndate">Date de Naissance : <span class="requis">*</span></label>
+                    <input type="text" name="Ndate" id="Ndate" placeholder="AAAA/MM/JJ"/><br/>
+                    <span class="erreur">${form.erreurs['Ndate']}</span><br />
+                    <label for="mdp">Votre Mot de Passe : <span class="requis">*</span></label>
+                    <input type="text" name="mdp" id="mdp" placeholder="Votre mot de passe"/><br/>
+                    <span class="erreur">${form.erreurs['mdp']}</span><br />
+                    <label for="confirmation">Confirmation du Mot de Passe : <span class="requis">*</span></label>
+                    <input type="text" name="confirmation" id="confirmation" placeholder="Confirmation"/><br/>
+                    <span class="erreur">${form.erreurs['confirmation']}</span><br />
+                    <label for="licence">Votre Numéro de Licence : <span class="requis">*</span></label>
+                    <input type="text" name="licence" id="licence" placeholder="Votre licence"/><br/>
+                    <span class="erreur">${form.erreurs['licence']}</span><br />
+                    <br/>
+                    <label for="ligue">Votre Ligue : <span class="requis">*</span></label>
+                    <select name="ligue" >
+                        <option value="0">Ligue</option>
+                        <option value="Football">Football</option>
+                        <option value="Tennis">Tennis</option>
+                        <option value="Natation">Natation</option>
+                        <option value="Judo">Judo</option>
+                    </select><br/>
+                    <span class="erreur">${form.erreurs['ligue']}</span><br />			
+                    <label for="type">Etes vous Adhérent ou Représentant : <span class="requis">*</span></label>
+                    <select name="type" >
+                        <option value=0>Statut</option>
+                        <option value=Adhérent>Adhérent</option>
+                        <option value=Représentant>Représentant</option>
+                    </select><br/>
+                    <span class="erreur">${form.erreurs['type']}</span><br />
+                    <input type="submit" value="VALIDER" name="valider" />
+                    <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+                </form>
+            </div>
+        </div>
 
-    </div>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="jumbotron">
+                        <div class="container">
+                            <div id="copyright">
+                                <a>&copy; Copyright FREDI Efficom | 2016-2017, tous droits réservés.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="jumbotron">
+                        <div class="container">
+                            <ul class="link-list">
+                                <li><a href="https://www.google.fr/">Google</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 
-  {% endfor %}
-
-  {% block fos_user_content %}
-
-  {% endblock fos_user_content %}
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" language="JavaScript" src="js/script.js"></script>
+    </body>
 
 {% endblock %}

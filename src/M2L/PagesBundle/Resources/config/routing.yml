@@ -1,6 +1,20 @@
 m2l_pages_home:
-    path:    /{page}
+    path:    /
     defaults:
         _controller: M2LPagesBundle:Main:index
     requirements:
         page: \d*
+        
+m2l_pages_login:
+    path:    /login
+    defaults:
+        _controller: M2LPagesBundle:Main:login
+    requirements:
+        page: \d+
+        
+m2l_pages_register:
+    path:    /register
+    defaults:
+        _controller: M2LPagesBundle:Main:register
+    requirements:
+        page: \d+

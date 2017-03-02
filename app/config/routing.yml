@@ -1,10 +1,6 @@
-m2l_user:
-    resource: "@M2LUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 m2l_pages:
     resource: "@M2LPagesBundle/Resources/config/routing.yml"
-    prefix:   /home
+    prefix:   /
     
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
