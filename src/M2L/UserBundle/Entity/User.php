@@ -63,7 +63,11 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
-
+    
+    public function __construct()
+   {
+       parent::__construct();
+   }
 
     /**
      * Get id
