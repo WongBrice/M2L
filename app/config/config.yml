@@ -81,6 +81,9 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    M2L\UserBundle\Entity\User
+    registration:
+        form:
+            type: m2l_user_registration
     
 # Assetic Configuration
 assetic:

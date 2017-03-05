@@ -20,4 +20,9 @@ class MainController extends Controller
     {
         return $this->render('M2LPagesBundle:Main:register.html.twig');
     }
+    
+    public function contactAction()
+    {
+        return $this->render('M2LPagesBundle:Main:contact.html.twig');
+    }
 }

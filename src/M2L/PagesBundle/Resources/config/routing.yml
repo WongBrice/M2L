@@ -18,3 +18,10 @@ m2l_pages_register:
         _controller: M2LPagesBundle:Main:register
     requirements:
         page: \d+
+        
+m2l_pages_contact:
+    path:    /contact
+    defaults:
+        _controller: M2LPagesBundle:Main:contact
+    requirements:
+        page: \d+

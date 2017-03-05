@@ -4,6 +4,7 @@ parameters:
 #    parameter_name: value
 
 services:
- #   service_name:
- #      class: M2L\PagesBundle\Directory\ClassName
- #      arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    m2l.form.registration:
+        class: M2L\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: m2l_user_registration }
