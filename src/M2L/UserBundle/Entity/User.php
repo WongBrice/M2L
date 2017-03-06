@@ -3,8 +3,7 @@
 namespace M2L\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\Validator\Constraints as Assert;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * User
@@ -127,26 +126,26 @@ class User extends BaseUser
     }
 
     /**
-     * Set adress
+     * Set address
      *
-     * @param string $adress
+     * @param string $address
      * @return User
      */
-    public function setAdress($adress)
+    public function setAddress($address)
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
 
     /**
-     * Get adress
+     * Get address
      *
      * @return string 
      */
-    public function getAdress()
+    public function getAddress()
     {
-        return $this->adress;
+        return $this->address;
     }
 
     /**
@@ -216,28 +215,5 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return User
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 }

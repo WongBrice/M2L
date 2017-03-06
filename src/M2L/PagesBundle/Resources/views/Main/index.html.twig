@@ -2,45 +2,11 @@
 
 {% block body %}
 
-    <body>
-        <header>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{ path('m2l_pages_home') }}">Accueil</a></li>
-                        <li><a href="{{ path('m2l_pages_login') }}">Se connecter</a></li>
-                        <li><a href="{{ path('m2l_pages_register') }}">S'inscrire</a></li>
-                        <li><a href="{{ path('m2l_pages_contact') }}">Nous contacter</a></li>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</li>
-                            <a href="{{ path('fos_user_security_logout') }}">
-                            <li>{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</li>
-                            </a>
-                        {% else %}
-                            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
-                        {% endif %}
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
-        <img src="{{ asset('bundles/m2lpages/img/Logo01.png') }}" style="width: 100%; display: block;"/>
-        </header>
-
         <div class="jumbotron">
             <div class="container">
                 <h2>Bienvenue sur le site FREDI de la Maison des Ligues!</h2>
                 <p>Ce site est réservé aux membres inscrits aux différents clubs affiliés à la Maison des Ligues.</p>
             </div>
         </div>
-    </body>
 
 {% endblock %}
