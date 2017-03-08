@@ -8,9 +8,9 @@
             <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Resources/views/Security/login.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/contact.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Controller/MainController.php</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Entity/User.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Controller/RegistrationController.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp64/www/M2L/app/config/config.yml</file>
         </group>
     </open-files>
 </project-private>
