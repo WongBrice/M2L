@@ -84,7 +84,7 @@
             ],
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
-            "time": "2016-09-23T06:06:29+00:00"
+            "time": "2016-09-23 06:06:29"
         },
         {
             "name": "doctrine/annotations",
@@ -1475,7 +1475,7 @@
                 "php",
                 "stylesheet"
             ],
-            "time": "2017-02-23T18:01:04+00:00"
+            "time": "2017-02-23 18:01:04"
         },
         {
             "name": "paragonie/random_compat",
