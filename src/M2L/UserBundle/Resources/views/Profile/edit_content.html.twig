@@ -1,6 +1,37 @@
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
+    
+    <h2>Modification</h2>
+    
+    </br>{{ form_widget(form.username, { 'attr': {'placeholder': 'Votre pseudo'} }) }}
+    {{ form_errors(form.username) }}
+    
+    </br></br>{{ form_widget(form.email, { 'attr': {'placeholder': 'Votre adresse email'} }) }}
+    {{ form_errors(form.email) }}
+    
+    </br></br>{{ form_widget(form.first_name, { 'attr': {'placeholder': 'Votre prénom'} }) }}
+    {{ form_errors(form.first_name) }}
+    
+    </br></br>{{ form_widget(form.last_name, { 'attr': {'placeholder': 'Votre nom'} }) }}
+    {{ form_errors(form.last_name) }}
+    
+    </br></br>{{ form_widget(form.address, { 'attr': {'placeholder': 'Votre adresse'} }) }}
+    {{ form_errors(form.address) }}
+    
+    </br></br>{{ form_widget(form.city, { 'attr': {'placeholder': 'Votre commune'} }) }}
+    {{ form_errors(form.city) }}
+    
+    </br></br>{{ form_widget(form.postal_code, { 'attr': {'placeholder': 'Votre code postal'} }) }}
+    {{ form_errors(form.postal_code) }}
+    
+    </br></br>{{ form_widget(form.phone, { 'attr': {'placeholder': 'Votre n° de téléphone'} }) }}
+    {{ form_errors(form.phone) }}
+    
+    </br></br>{{ form_widget(form.current_password, { 'attr': {'placeholder': 'Mot de passe actuel'} }) }}
+    {{ form_errors(form.current_password) }}
+    
+    </br>{{ form_widget(form) }}
+    
     <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+        </br></br><input type="submit" id="_submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
     </div>
 </form>

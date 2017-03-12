@@ -27,12 +27,28 @@ a
   text-align: center;
 }
 
-form
+.container form
 {
-  text-align: center;
+    text-align: center;
 }
 
-input
+.container input.form-control
 {
-  text-align: center;
+    display: table-row;
+    text-align: center;
+    width: 220px;
+}
+
+.container input#_submit
+{
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    width: 150px;
+}
+
+.container a.edit
+{
+    text-align: center;
+    display: block;
+    font-size: 1.2em;
 }

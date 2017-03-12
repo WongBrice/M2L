@@ -84,6 +84,9 @@ fos_user:
     registration:
         form:
             type: m2l_user_registration
+    profile:
+        form:
+            type: m2l_user_profile
     
 # Assetic Configuration
 assetic:
