@@ -16,7 +16,11 @@
 
     </br></br><input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+    
+    </br></br><a class="link" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié?</a>
 
-    </br></br><input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    </br><input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    
+    </br></br><a class="link" href="{{ path('fos_user_registration_register') }}">Pas encore inscrit? Inscrivez-vous ici!</a>
 </form>
 {% endblock fos_user_content %}

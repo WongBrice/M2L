@@ -10,5 +10,7 @@
     <p>Commune : {{ user.city }}</p>
     <p>Code Postal : {{ user.postalCode }}</p>
     <p>N° de téléphone : {{ user.phone }}</p>
-    <a class="edit" href="{{ path('fos_user_profile_edit') }}">Editer</a>
+    <a class="link" href="{{ path('fos_user_profile_edit') }}">Modifier le profil</a>
+    
+    </br><a class="link" href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a>
 </div>
