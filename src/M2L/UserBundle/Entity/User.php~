@@ -35,6 +35,13 @@ class User extends BaseUser
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     protected $lastName;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthdate", type="datetime")
+     */
+    protected $birthdate;
 
     /**
      * @var string
@@ -63,6 +70,27 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="licence", type="string", length=255)
+     */
+    protected $licence;
+    
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="ligue", type="array", length=255)
+     */
+    protected $ligue;
+    
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="type", type="array", length=255)
+     */
+    protected $type;
     
     public function __construct()
    {
@@ -123,6 +151,29 @@ class User extends BaseUser
     public function getLastName()
     {
         return $this->lastName;
+    }
+    
+        /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     * @return User
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \Datetime 
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
     }
 
     /**
@@ -215,5 +266,74 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set licence
+     *
+     * @param string $licence
+     * @return User
+     */
+    public function setLicence($licence)
+    {
+        $this->licence = $licence;
+
+        return $this;
+    }
+
+    /**
+     * Get licence
+     *
+     * @return string 
+     */
+    public function getLicence()
+    {
+        return $this->licence;
+    }
+
+    /**
+     * Set ligue
+     *
+     * @param array $ligue
+     * @return User
+     */
+    public function setLigue($ligue)
+    {
+        $this->ligue = $ligue;
+
+        return $this;
+    }
+
+    /**
+     * Get ligue
+     *
+     * @return array 
+     */
+    public function getLigue()
+    {
+        return $this->ligue;
+    }
+
+    /**
+     * Set type
+     *
+     * @param array $type
+     * @return User
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return array 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

@@ -39,6 +39,14 @@ a
     width: 220px;
 }
 
+.container select.form-control
+{
+    display: table-row;
+    text-align: center;
+    width: 220px;
+    height: 50px;
+}
+
 .container input#_submit
 {
     border: 1px solid #cccccc;

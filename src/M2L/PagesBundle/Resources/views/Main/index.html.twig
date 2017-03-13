@@ -2,11 +2,16 @@
 
 {% block body %}
 
-        <div class="jumbotron">
-            <div class="container">
+    <div class="jumbotron">
+        <div class="container">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <h2>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} !</h2>
+                <p>Votre session est active.</p>
+            {% else %}
                 <h2>Bienvenue sur le site FREDI de la Maison des Ligues!</h2>
                 <p>Ce site est réservé aux membres inscrits aux différents clubs affiliés à la Maison des Ligues.</p>
-            </div>
+            {% endif %}
         </div>
+    </div>
 
 {% endblock %}

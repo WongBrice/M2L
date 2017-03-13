@@ -22,6 +22,14 @@ class RegistrationType extends AbstractType
                         'placeholder' => 'Votre Nom'
                     )
                 ))
+                ->add('birthdate', 'datetime', array(
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => array(
+                        'placeholder' => 'Votre Date de Naissance',
+                        'class' => 'flatpickr'
+                    )
+                ))
                 ->add('address', 'text', array(
                     'attr' => array(
                         'placeholder' => 'Votre Adresse'
@@ -40,6 +48,25 @@ class RegistrationType extends AbstractType
                 ->add('phone', 'text', array(
                     'attr' => array(
                         'placeholder' => 'Votre N° de Téléphone'
+                    )
+                ))
+                ->add('licence', 'text', array(
+                    'attr' => array(
+                        'placeholder' => 'Votre N° de Licence'
+                    )
+                ))
+                ->add('ligue', 'choice', array(
+                    'choices' => array(
+                        'Football' => 'Football',
+                        'Tennis' => 'Tennis',
+                        'Natation' => 'Natation',
+                        'Judo' => 'Judo',
+                    )
+                ))
+                ->add('type', 'choice', array(
+                    'choices' => array(
+                        'Adhérent' => 'Adhérent',
+                        'Représentant' => 'Représentant',
                     )
                 ))
                 ;
