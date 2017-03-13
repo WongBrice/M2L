@@ -13,6 +13,7 @@ class RegistrationType extends AbstractType
         $builder
                 ->add('first_name', 'text', array(
                     'attr' => array(
+                        'label' => 'Prénom',
                         'placeholder' => 'Votre Prénom'
                     )
                 ))

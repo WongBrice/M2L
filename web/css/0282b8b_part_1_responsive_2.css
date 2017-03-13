@@ -1,6 +1,3 @@
-/* Main style
-------------------------------------------- */
-
 body 
 {
   background-color: #DCDCDC;
@@ -22,17 +19,3 @@ p
   text-align: center;
 }
 
-a
-{
-  text-align: center;
-}
-
-form
-{
-  text-align: center;
-}
-
-input
-{
-  text-align: center;
-}

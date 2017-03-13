@@ -1,6 +1,38 @@
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
+ 
+    <h2>Inscription</h2>
+    
+    </br>{{ form_widget(form.username, { 'attr': {'placeholder': 'Votre pseudo'} }) }}
+    {{ form_errors(form.username) }}
+    
+    </br></br>{{ form_widget(form.email, { 'attr': {'placeholder': 'Votre adresse email'} }) }}
+    {{ form_errors(form.email) }}
+    
+    </br></br>{{ form_widget(form.first_name, { 'attr': {'placeholder': 'Votre prénom'} }) }}
+    {{ form_errors(form.first_name) }}
+    
+    </br></br>{{ form_widget(form.last_name, { 'attr': {'placeholder': 'Votre nom'} }) }}
+    {{ form_errors(form.last_name) }}
+    
+    </br></br>{{ form_widget(form.address, { 'attr': {'placeholder': 'Votre adresse'} }) }}
+    {{ form_errors(form.address) }}
+    
+    </br></br>{{ form_widget(form.city, { 'attr': {'placeholder': 'Votre commune'} }) }}
+    {{ form_errors(form.city) }}
+    
+    </br></br>{{ form_widget(form.postal_code, { 'attr': {'placeholder': 'Votre code postal'} }) }}
+    {{ form_errors(form.postal_code) }}
+    
+    </br></br>{{ form_widget(form.phone, { 'attr': {'placeholder': 'Votre n° de téléphone'} }) }}
+    {{ form_errors(form.phone) }}
+    
+    </br></br>{{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Votre mot de passe'} }) }}
+    {{ form_errors(form.plainPassword.first) }}
+    
+    </br></br>{{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmation du mot de passe'} }) }}
+    {{ form_errors(form.plainPassword.second) }}
+    
     <div>
-        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+        </br></br><input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
     </div>
 </form>
