@@ -49,9 +49,12 @@ a
 
 .container input#_submit
 {
+    color: white;
+    background-color: #333333;
     border: 1px solid #cccccc;
     border-radius: 4px;
     width: 200px;
+    height: 30px;
 }
 
 .container a.link
@@ -65,25 +68,3 @@ div.fos_user_success
 {
     text-align: center;
 }
-
-body 
-{
-  background-color: #DCDCDC;
-  color: #DCDCDC;
-  padding-top: 50px;
-}
-
-h1
-{
-  text-align: center;
-}
-h2
-{
-  text-align: center;
-}
-
-p
-{
-  text-align: center;
-}
-

@@ -1,0 +1,20 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+<meta charset="{{ _charset }}" />
+<title>{% block title %}An Error Occurred: {{ status_text }}{% endblock %}</title>
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Oops! Une erreur s'est produite</h1>
+            <h2>Le server affiche : "{{ status_code }} {{ status_text }}".</h2>
+
+            <div>
+                La page que vous recherchez est introuvable. 
+                Veuillez nous excuser pour les problèmes occasionnés.
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

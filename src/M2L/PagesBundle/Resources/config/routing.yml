@@ -11,3 +11,17 @@ m2l_pages_contact:
         _controller: M2LPagesBundle:Main:contact
     requirements:
         page: \d+
+        
+m2l_pages_tresorier:
+    path:    /tresorier
+    defaults:
+        _controller: M2LPagesBundle:Main:tresorier
+    requirements:
+        page: \d+
+        
+m2l_list_user:
+    path:    /list
+    defaults:
+        _controller: M2LPagesBundle:Main:list
+    requirements:
+        page: \d+

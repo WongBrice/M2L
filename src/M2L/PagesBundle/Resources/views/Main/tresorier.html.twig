@@ -1,0 +1,42 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <table id="user-list"> 
+                <thead> 
+                    <tr> 
+                        <th>Pseudo</th> 
+                        <th>Email</th> 
+                        <th>Date de naissance</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                </tbody> 
+            </table> 
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script> 
+        $(function() { 
+            $('#user-list').DataTable({ 
+                "processing": true, 
+                "serverSide": true, 
+                "ajax": "{{ path('m2l_list_user') }}", 
+                "sAjaxDataProp": "data", 
+                "pageLength": 10, 
+                "columns":[ 
+                    {"data": "username"}, 
+                    {"data": "email"}, 
+                    {"data": "birthdate"} 
+                ] 
+            }); 
+        });
+    </script> 
+    
+{% endblock %}

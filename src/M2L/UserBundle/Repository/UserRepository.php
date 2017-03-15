@@ -12,4 +12,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function search($data, $page = 0, $max = NULL, $getResult = true) 
+    { 
+        $qb = $this->_em->createQueryBuilder(); 
+        $query = isset($data['query']) && $data['query']?$data['query']:null; 
+ 
+        $qb 
+            ->select('u') 
+            ->from('M2LUserBundle:User', 'u') 
+        ; 
+ 
+        if ($query) { 
+            $qb 
+                ->andWhere('u.username like :query') 
+                ->setParameter('query', "%".$query."%") 
+            ; 
+        } 
+ 
+        if ($max) { 
+            $preparedQuery = $qb->getQuery() 
+                ->setMaxResults($max) 
+                ->setFirstResult($page * $max) 
+            ; 
+        } else { 
+            $preparedQuery = $qb->getQuery(); 
+        } 
+ 
+        return $getResult?$preparedQuery->getResult():$preparedQuery; 
+    } 
 }
