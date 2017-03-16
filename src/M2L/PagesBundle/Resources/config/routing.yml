@@ -22,13 +22,13 @@ m2l_pages_contact:
 m2l_pages_tresorier:
     path:    /tresorier
     defaults:
-        _controller: M2LPagesBundle:Main:tresorier
+        _controller: M2LPagesBundle:Admin:tresorier
     requirements:
         page: \d+
         
 m2l_list_user:
     path:    /
     defaults:
-        _controller: M2LPagesBundle:Main:list
+        _controller: M2LPagesBundle:Admin:list
     requirements:
         _methods: GET
