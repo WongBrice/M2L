@@ -1,8 +1,5 @@
 {% extends 'M2LPagesBundle::layout.html.twig' %}
 
-<meta charset="{{ _charset }}" />
-<title>{% block title %}An Error Occurred: {{ status_text }}{% endblock %}</title>
-
 {% block body %}
 
     <div class="jumbotron">
@@ -11,8 +8,8 @@
             <h2>Le server affiche : "{{ status_code }} {{ status_text }}".</h2>
 
             <div>
-                La page que vous recherchez est introuvable. 
-                Veuillez nous excuser pour les problèmes occasionnés.
+                <p>La page que vous recherchez est introuvable.</p>
+                <p>Veuillez nous excuser pour les problèmes occasionnés.</p>
             </div>
         </div>
     </div>

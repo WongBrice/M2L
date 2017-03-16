@@ -29,6 +29,7 @@ security:
                 secret: %secret%
                 lifetime: 31536000
                 always_remember_me: true
+            switch_user: { role: ROLE_ADMIN }
                 
     access_control:
             - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }

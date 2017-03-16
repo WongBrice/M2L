@@ -5,6 +5,13 @@ m2l_pages_home:
     requirements:
         page: \d*
         
+m2l_pages_frais:
+    path:    /frais
+    defaults:
+        _controller: M2LPagesBundle:Main:frais
+    requirements:
+        page: \d*
+        
 m2l_pages_contact:
     path:    /contact
     defaults:
@@ -20,7 +27,7 @@ m2l_pages_tresorier:
         page: \d+
         
 m2l_list_user:
-    path:    /list
+    path:    /
     defaults:
         _controller: M2LPagesBundle:Main:list
     requirements:

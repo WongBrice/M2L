@@ -14,6 +14,11 @@ class MainController extends Controller
     {
         return $this->render('M2LPagesBundle:Main:index.html.twig');
     }
+    
+    public function fraisAction() 
+    {
+        return $this->render('M2LPagesBundle:Main:frais.html.twig');
+    }
 
     public function contactAction() 
     {
@@ -23,7 +28,8 @@ class MainController extends Controller
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function tresorierAction() {
+    public function tresorierAction() 
+    {
         return $this->render('M2LPagesBundle:Main:tresorier.html.twig');
     }
 
