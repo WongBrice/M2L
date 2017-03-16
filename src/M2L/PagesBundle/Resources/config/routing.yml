@@ -31,4 +31,4 @@ m2l_list_user:
     defaults:
         _controller: M2LPagesBundle:Main:list
     requirements:
-        page: \d+
+        _methods: GET

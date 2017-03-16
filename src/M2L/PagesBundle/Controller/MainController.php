@@ -49,7 +49,7 @@ class MainController extends Controller
             'query' => @$search['value']
         ];
 
-        $users = $this->getDoctrine()->getRepository('M2LUserBundle:User')->search(
+        $user = $this->getDoctrine()->getRepository('M2LUserBundle:User')->search(
                 $filters, $start, $length
         );
 
@@ -59,7 +59,8 @@ class MainController extends Controller
             'recordsTotal' => count($this->getDoctrine()->getRepository('M2LUserBundle:User')->search(array(), 0, false))
         );
 
-        foreach ($users as $user) {
+        foreach ($user as $user) 
+        {
             $output['data'][] = [
                 'username' => $user->getUsername(),
                 'email' => $user->getEmail(),
