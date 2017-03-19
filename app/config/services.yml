@@ -12,3 +12,7 @@ services:
         class: M2L\UserBundle\Form\ProfileType
         tags:
             - { name: form.type, alias: m2l_user_profile }
+    m2l.form.frais:
+        class: M2L\PagesBundle\Form\FraisType
+        tags:
+            - { name: form.type, alias: m2l_pages_frais }

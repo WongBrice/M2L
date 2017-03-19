@@ -11,50 +11,20 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('first_name', 'text', array(
-                    'attr' => array(
-                        'label' => 'Prénom',
-                        'placeholder' => 'Votre Prénom'
-                    )
-                ))
-                ->add('last_name', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre Nom'
-                    )
-                ))
+                ->add('first_name', 'text')
+                ->add('last_name', 'text')
                 ->add('birthdate', 'datetime', array(
                     'widget' => 'single_text',
                     'format' => 'yyyy-MM-dd',
                     'attr' => array(
-                        'placeholder' => 'Votre Date de Naissance',
                         'class' => 'flatpickr'
                     )
                 ))
-                ->add('address', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre Adresse'
-                    )
-                ))
-                ->add('city', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre Commune'
-                    )
-                ))
-                ->add('postal_code', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre Code Postal'
-                    )
-                ))
-                ->add('phone', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre N° de Téléphone'
-                    )
-                ))
-                ->add('licence', 'text', array(
-                    'attr' => array(
-                        'placeholder' => 'Votre N° de Licence'
-                    )
-                ))
+                ->add('address', 'text')
+                ->add('city', 'text')
+                ->add('postal_code', 'text')
+                ->add('phone', 'text')
+                ->add('licence', 'text')
                 ->add('ligue', 'choice', array(
                     'choices' => array(
                         'Football' => 'Football',

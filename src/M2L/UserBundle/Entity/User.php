@@ -93,9 +93,9 @@ class User extends BaseUser
     protected $type;
     
     public function __construct()
-   {
+    {
        parent::__construct();
-   }
+    }
 
     /**
      * Get id

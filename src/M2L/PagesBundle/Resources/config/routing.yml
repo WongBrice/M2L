@@ -5,6 +5,20 @@ m2l_pages_home:
     requirements:
         page: \d*
         
+m2l_pages_view:
+    path:    /view
+    defaults:
+        _controller: M2LPagesBundle:Main:view
+    requirements:
+        page: \d*
+        
+m2l_list_frais:
+    path:    /view/listfrais
+    defaults:
+        _controller: M2LPagesBundle:Main:listfrais
+    requirements:
+        _methods: GET
+        
 m2l_pages_frais:
     path:    /frais
     defaults:

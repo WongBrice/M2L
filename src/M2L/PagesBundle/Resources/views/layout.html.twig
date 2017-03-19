@@ -39,7 +39,7 @@
                             <li><a href="{{ path('m2l_pages_home') }}">Accueil</a></li>
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li><a href="{{ path('fos_user_profile_show') }}">Espace personnel</a></li>
-                                <li><a href="{{ path('m2l_pages_frais') }}">Note de frais</a></li>
+                                <li><a href="{{ path('m2l_pages_view') }}">Note de frais</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                             {% else %}
                                 <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
