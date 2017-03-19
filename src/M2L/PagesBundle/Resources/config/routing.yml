@@ -27,7 +27,7 @@ m2l_pages_tresorier:
         page: \d+
         
 m2l_list_user:
-    path:    /
+    path:    /tresorier/list
     defaults:
         _controller: M2LPagesBundle:Admin:list
     requirements:

@@ -68,3 +68,11 @@ div.fos_user_success
 {
     text-align: center;
 }
+
+td.details-control {
+    background: url('../img/open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.details td.details-control {
+    background: url('../img/close.png') no-repeat center center;
+}

@@ -49,7 +49,16 @@ class AdminController extends Controller
             $output['data'][] = [
                 'username' => $user->getUsername(),
                 'email' => $user->getEmail(),
+                'first_name' => $user->getFirstName(),
+                'last_name' => $user->getLastName(),
                 'birthdate' => $user->getBirthdate()->format('Y-m-d'),
+                'address' => $user->getAddress(),
+                'city' => $user->getCity(),
+                'postal_code' => $user->getPostalCode(),
+                'phone' => $user->getPhone(),
+                'licence' => $user->getLicence(),
+                'ligue' => $user->getLigue(),
+                'type' => $user->getType(),
             ];
         }
 
