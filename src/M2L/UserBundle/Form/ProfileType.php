@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -41,21 +41,21 @@ class RegistrationType extends AbstractType
                 ))
                 ;
     }
-    
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'M2L\UserBundle\Entity\User',
         ));
     }
-
+    
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'fos_user_profile';
     }
 
     public function getName()
     {
-        return 'm2l_user_registration';
+        return 'm2l_user_profile';
     }
 }

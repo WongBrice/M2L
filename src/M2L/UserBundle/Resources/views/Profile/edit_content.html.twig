@@ -1,6 +1,49 @@
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
+    
+    <h2>Modification du profil</h2>
+    
+    </br>{{ form_widget(form.username, { 'attr': {'placeholder': 'Votre Pseudo'} }) }}
+    {{ form_errors(form.username) }}
+    
+    </br></br>{{ form_widget(form.email, { 'attr': {'placeholder': 'Votre Adresse Email'} }) }}
+    {{ form_errors(form.email) }}
+    
+    </br></br>{{ form_widget(form.first_name, { 'attr': {'placeholder': 'Votre Prénom'} }) }}
+    {{ form_errors(form.first_name) }}
+    
+    </br></br>{{ form_widget(form.last_name, { 'attr': {'placeholder': 'Votre Nom'} }) }}
+    {{ form_errors(form.last_name) }}
+    
+    </br></br>{{ form_widget(form.birthdate, { 'attr': {'placeholder': 'Votre Date de Naissance', 'class': 'flatpickr'} }) }}
+    {{ form_errors(form.birthdate) }}
+    
+    </br></br>{{ form_widget(form.address, { 'attr': {'placeholder': 'Votre Adresse'} }) }}
+    {{ form_errors(form.address) }}
+    
+    </br></br>{{ form_widget(form.city, { 'attr': {'placeholder': 'Votre Commune'} }) }}
+    {{ form_errors(form.city) }}
+    
+    </br></br>{{ form_widget(form.postal_code, { 'attr': {'placeholder': 'Votre Code Postal'} }) }}
+    {{ form_errors(form.postal_code) }}
+    
+    </br></br>{{ form_widget(form.phone, { 'attr': {'placeholder': 'Votre N° de Téléphone'} }) }}
+    {{ form_errors(form.phone) }}
+    
+    </br></br>{{ form_widget(form.licence, { 'attr': {'placeholder': 'Votre N° de Licence'} }) }}
+    {{ form_errors(form.licence) }}
+    
+    </br></br>{{ form_widget(form.ligue, { 'attr': {'placeholder': 'Votre Ligue'} }) }}
+    {{ form_errors(form.ligue) }}
+    
+    </br></br>{{ form_widget(form.type, { 'attr': {'placeholder': 'Votre Statut'} }) }}
+    {{ form_errors(form.type) }}
+    
+    </br></br>{{ form_widget(form.current_password, { 'attr': {'placeholder': 'Mot de Passe Actuel'} }) }}
+    {{ form_errors(form.current_password) }}
+    
+    </br>{{ form_widget(form) }}
+    
     <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+        </br></br><input type="submit" id="_submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
     </div>
 </form>

@@ -75,9 +75,9 @@ div.fos_user_success
 }
 
 td.details-control {
-    background: url('../img/open.png') no-repeat center center;
+    background: url('../../bundles/m2lpages/img/open.png') no-repeat center center;
     cursor: pointer;
 }
 tr.details td.details-control {
-    background: url('../img/close.png') no-repeat center center;
+    background: url('../../bundles/m2lpages/img/close.png') no-repeat center center;
 }

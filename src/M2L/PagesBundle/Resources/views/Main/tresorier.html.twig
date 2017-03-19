@@ -1,0 +1,73 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            
+            <h2>Liste des adhérents</h2>
+            
+            <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%"> 
+                <thead> 
+                    <tr> 
+                        <th>Pseudo</th> 
+                        <th>Email</th>
+                        <th>Prénom</th> 
+                        <th>Nom</th> 
+                        <th>Date de naissance</th>
+                        <th>Adresse</th>
+                        <th>Commune</th>
+                        <th>Code postal</th>
+                        <th>N° de téléphone</th>
+                        <th>N° de licence</th>
+                        <th>Ligue</th>
+                        <th>Statut</th>
+                    </tr> 
+                </thead> 
+                <tbody>
+                </tbody>
+            </table> 
+            
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }} 
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> 
+<script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script> 
+<script>
+    $(function ()
+    {
+        $('#list').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "ajax": "{{ path('m2l_list_user') }}",
+            "sAjaxDataProp": "data",
+            "pageLength": 10,
+            "columns": [
+                {"data": "username"},
+                {"data": "email"},
+                {"data": "first_name"},
+                {"data": "last_name"},
+                {"data": "birthdate"},
+                {"data": "address"},
+                {"data": "city"},
+                {"data": "postal_code"},
+                {"data": "phone"},
+                {"data": "licence"},
+                {"data": "ligue"},
+                {"data": "type"}
+            ],
+            "order": [[1, 'asc']]
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Oops! Une erreur s'est produite</h1>
+            <h2>Le server affiche : "{{ status_code }} {{ status_text }}".</h2>
+
+            <div>
+                <p>Vous n'avez pas les droits d'accès à cette page.</p> 
+                <p>Veuillez nous excuser pour les problèmes occasionnés.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
