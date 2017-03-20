@@ -3,6 +3,7 @@
 namespace M2L\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Frais
@@ -62,6 +63,12 @@ class Frais
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
+    
+    /**
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="first_name")
+     */
+    private $user;
     
     public function __construct()
     {
@@ -214,5 +221,28 @@ class Frais
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \M2L\UserBundle\Entity\User $user
+     * @return Frais
+     */
+    public function setUser(\M2L\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \M2L\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

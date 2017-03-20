@@ -26,6 +26,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Frais", mappedBy="user", cascade={"persist"})
      */
     protected $firstName;
 
