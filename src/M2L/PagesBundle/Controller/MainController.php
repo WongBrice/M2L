@@ -52,7 +52,7 @@ class MainController extends Controller
                 'peage' => $frais->getPeage(),
                 'repas' => $frais->getRepas(),
                 'heberg' => $frais->getHeberg(),
-                'createdAt' => $frais->getCreatedAt()->format('Y-m-d à H:i'),
+                'createdAt' => $frais->getCreatedAt()->format('Y/m/d à H:i'),
             ];
         }
 
