@@ -3,7 +3,6 @@
 namespace M2L\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Frais
@@ -28,6 +27,13 @@ class Frais
      * @ORM\Column(name="trajet", type="string", length=100)
      */
     private $trajet;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="motif", type="string", length=100)
+     */
+    private $motif;
 
     /**
      * @var int
@@ -35,6 +41,13 @@ class Frais
      * @ORM\Column(name="km", type="integer")
      */
     private $km;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cout", type="float")
+     */
+    private $cout;
 
     /**
      * @var float
@@ -244,5 +257,51 @@ class Frais
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set motif
+     *
+     * @param string $motif
+     * @return Frais
+     */
+    public function setMotif($motif)
+    {
+        $this->motif = $motif;
+
+        return $this;
+    }
+
+    /**
+     * Get motif
+     *
+     * @return string 
+     */
+    public function getMotif()
+    {
+        return $this->motif;
+    }
+
+    /**
+     * Set cout
+     *
+     * @param float $cout
+     * @return Frais
+     */
+    public function setCout($cout)
+    {
+        $this->cout = $cout;
+
+        return $this;
+    }
+
+    /**
+     * Get cout
+     *
+     * @return float 
+     */
+    public function getCout()
+    {
+        return $this->cout;
     }
 }

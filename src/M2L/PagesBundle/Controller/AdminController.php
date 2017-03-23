@@ -3,15 +3,22 @@
 namespace M2L\PagesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
+ * et à ceux possédant le role "ROLE_ADMIN".
+ */
 class AdminController extends Controller 
 {
     
     /**
      * @Security("has_role('ROLE_ADMIN')")
+     * Cette annotation "@Security" sert à restreindre l'accès à la fonction
+     * à ceux qui ne possèdent pas le role "ROLE_ADMIN".
+     * Cette fonction retourne vers la vue tresorier.html.twig, qui est la page "Espace tresorier"
      */
     public function tresorierAction() 
     {
@@ -20,6 +27,8 @@ class AdminController extends Controller
 
     /**
      * @Security("has_role('ROLE_ADMIN')")
+     * Cette fonction sert à récupérer les informations de la table "user"
+     * pour les afficher sur la vue tresorier en ajax
      */
     public function listAction(Request $request) 
     {

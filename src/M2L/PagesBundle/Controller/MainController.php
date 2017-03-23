@@ -8,9 +8,17 @@ use M2L\PagesBundle\Form\FraisType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
+ * et à ceux possédant le role "ROLE_ADMIN".
+ */
 class MainController extends Controller 
 {
-
+    
+    /**
+     * Cette fonction sert à récupérer les informations de la table "user"
+     * pour les afficher sur la vue tresorier en ajax
+     */
     public function indexAction() 
     {
         return $this->render('M2LPagesBundle:Main:index.html.twig');
@@ -48,7 +56,9 @@ class MainController extends Controller
         {
             $output['data'][] = [
                 'trajet' => $frais->getTrajet(),
+                'motif' => $frais->getMotif(),
                 'km' => $frais->getKm(),
+                'cout' => $frais->getCout(),
                 'peage' => $frais->getPeage(),
                 'repas' => $frais->getRepas(),
                 'heberg' => $frais->getHeberg(),

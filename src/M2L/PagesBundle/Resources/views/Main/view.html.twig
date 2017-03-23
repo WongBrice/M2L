@@ -18,8 +18,10 @@
             <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%"> 
                 <thead> 
                     <tr> 
-                        <th>Frais trajet</th> 
+                        <th>Trajet</th> 
+                        <th>Motif</th> 
                         <th>Kilomètres parcourus</th>
+                        <th>Coût trajet</th>
                         <th>Frais péage</th> 
                         <th>Frais repas</th> 
                         <th>Frais hébergement</th>
@@ -49,6 +51,12 @@
             "serverSide": true,
             "scrollX": true,
             "scrollCollapse": true,
+            "language": 
+             {
+                "zeroRecords": "La liste est vide",
+                "infoEmpty": "La liste est vide",
+                "search": "Recherche"
+            },
             "paging":   false,
             "ordering": false,
             "info":     false,
@@ -57,7 +65,9 @@
             "pageLength": 10,
             "columns": [
                 {"data": "trajet"},
+                {"data": "motif"},
                 {"data": "km"},
+                {"data": "cout"},
                 {"data": "peage"},
                 {"data": "repas"},
                 {"data": "heberg"},

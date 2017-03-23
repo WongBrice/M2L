@@ -14,7 +14,9 @@ class FraisType extends AbstractType
     {
         $builder
                 ->add('trajet', TextType::class)
+                ->add('motif', TextType::class)
                 ->add('km', IntegerType::class)
+                ->add('cout', 'number')
                 ->add('peage', 'number')
                 ->add('repas', 'number')
                 ->add('heberg', 'number')

@@ -8,12 +8,18 @@
 
                 <h2>Saisie note de frais</h2>
 
-                </br></br>{{ form_widget(form.trajet, { 'attr': {'placeholder': 'Frais trajet'} }) }}
+                </br></br>{{ form_widget(form.trajet, { 'attr': {'placeholder': 'Trajet'} }) }}
                 {{ form_errors(form.trajet) }}
+                
+                </br></br>{{ form_widget(form.motif, { 'attr': {'placeholder': 'Motif'} }) }}
+                {{ form_errors(form.motif) }}
 
                 </br></br>{{ form_widget(form.km, { 'attr': {'placeholder': 'Kilomètres parcourus'} }) }}
                 {{ form_errors(form.km) }}
 
+                </br></br>{{ form_widget(form.cout, { 'attr': {'placeholder': 'Coût trajet'} }) }}
+                {{ form_errors(form.cout) }}
+                
                 </br></br>{{ form_widget(form.peage, { 'attr': {'placeholder': 'Frais péage'} }) }}
                 {{ form_errors(form.peage) }}
 
