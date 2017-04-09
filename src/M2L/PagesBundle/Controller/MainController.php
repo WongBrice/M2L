@@ -16,19 +16,26 @@ class MainController extends Controller
 {
     
     /**
-     * Cette fonction sert à récupérer les informations de la table "user"
-     * pour les afficher sur la vue tresorier en ajax
+     * Cette fonction retourne vers la vue principale index.html.twig, qui est la page "Accueil"
      */
     public function indexAction() 
     {
         return $this->render('M2LPagesBundle:Main:index.html.twig');
     }
     
+    /**
+     * Cette fonction retourne vers la vue view.html.twig, qui est partie de la page "Note de Frais"
+     */
     public function viewAction() 
     {
         return $this->render('M2LPagesBundle:Main:view.html.twig');
     }
     
+    
+    /**
+     * Cette fonction sert à récupérer les informations de la table "frais"
+     * pour les afficher sur la vue view de la page "Note de frais" en ajax
+     */
     public function listfraisAction(Request $request) 
     {
         $length = $request->get('length');
@@ -69,6 +76,11 @@ class MainController extends Controller
         return new Response(json_encode($output), 200, ['Content-Type' => 'application/json']);
     }
     
+    /**
+     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Elle sert également à récupérer les informations par le biais du formulaire qui se trouve sur la vue
+     * et qui seront persistés dans la table "frais"
+     */
     public function fraisAction(Request $request) 
     {
         $frais = new Frais();
@@ -92,7 +104,10 @@ class MainController extends Controller
                     'form' => $form->createView(),
         ));
     }
-
+    
+    /**
+     * Cette fonction retourne vers la vue contact.html.twig, qui est la page "Contact"
+     */
     public function contactAction() 
     {
         return $this->render('M2LPagesBundle:Main:contact.html.twig');

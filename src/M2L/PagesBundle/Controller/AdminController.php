@@ -28,7 +28,7 @@ class AdminController extends Controller
     /**
      * @Security("has_role('ROLE_ADMIN')")
      * Cette fonction sert à récupérer les informations de la table "user"
-     * pour les afficher sur la vue tresorier en ajax
+     * pour les afficher sur la vue tresorier de la page "Espace tresorier" en ajax
      */
     public function listAction(Request $request) 
     {
