@@ -26,7 +26,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
-     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Frais", mappedBy="user", cascade={"persist"})
      */
     protected $firstName;
 
@@ -92,6 +91,11 @@ class User extends BaseUser
      * @ORM\Column(name="type", type="array", length=255)
      */
     protected $type;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Frais", mappedBy="user")
+     */
+    protected $frais;
     
     public function __construct()
     {
@@ -336,5 +340,40 @@ class User extends BaseUser
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add frais
+     *
+     * @param \M2L\PagesBundle\Entity\Frais $frais
+     * @return User
+     */
+    public function addFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    {
+        $this->frais[] = $frais;
+        
+        $frais->setUser($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove frais
+     *
+     * @param \M2L\PagesBundle\Entity\Frais $frais
+     */
+    public function removeFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    {
+        $this->frais->removeElement($frais);
+    }
+
+    /**
+     * Get frais
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFrais()
+    {
+        return $this->frais;
     }
 }

@@ -78,14 +78,14 @@ class Frais
     private $createdAt;
     
     /**
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="first_name")
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="frais")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
     
     public function __construct()
     {
-    $this->createdAt = new \Datetime();
+        $this->createdAt = new \Datetime();
     }
 
     /**
@@ -120,6 +120,29 @@ class Frais
     {
         return $this->trajet;
     }
+    
+    /**
+     * Set motif
+     *
+     * @param string $motif
+     * @return Frais
+     */
+    public function setMotif($motif)
+    {
+        $this->motif = $motif;
+
+        return $this;
+    }
+
+    /**
+     * Get motif
+     *
+     * @return string 
+     */
+    public function getMotif()
+    {
+        return $this->motif;
+    }
 
     /**
      * Set km
@@ -142,6 +165,29 @@ class Frais
     public function getKm()
     {
         return $this->km;
+    }
+    
+    /**
+     * Set cout
+     *
+     * @param float $cout
+     * @return Frais
+     */
+    public function setCout($cout)
+    {
+        $this->cout = $cout;
+
+        return $this;
+    }
+
+    /**
+     * Get cout
+     *
+     * @return float 
+     */
+    public function getCout()
+    {
+        return $this->cout;
     }
 
     /**

@@ -6,10 +6,12 @@
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/index.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/frais.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/view.html.twig</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/tresorier.html.twig</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Controller/MainController.php</file>
+            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Entity/Frais.php</file>
+            <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Entity/User.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/layout.html.twig</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/UserBundle/Controller/ProfileController.php</file>
+            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Repository/FraisRepository.php</file>
+            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Form/FraisType.php</file>
         </group>
     </open-files>
 </project-private>

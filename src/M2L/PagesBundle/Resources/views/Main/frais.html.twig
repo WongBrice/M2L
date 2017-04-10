@@ -7,7 +7,9 @@
             <form action="{{ path('m2l_pages_frais') }}" method="POST">
 
                 <h2>Saisie note de frais</h2>
-
+                
+                {{ form_widget(form._token) }}
+                
                 </br></br>{{ form_widget(form.trajet, { 'attr': {'placeholder': 'Trajet'} }) }}
                 {{ form_errors(form.trajet) }}
                 
