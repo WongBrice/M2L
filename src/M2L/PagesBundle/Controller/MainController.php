@@ -7,8 +7,6 @@ use M2L\PagesBundle\Entity\Frais;
 use M2L\PagesBundle\Form\FraisType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
@@ -40,8 +38,6 @@ class MainController extends Controller
      */
     public function listfraisAction(Request $request) 
     {
-
-        
         $length = $request->get('length');
         $length = $length && ($length != -1) ? $length : 0;
 
