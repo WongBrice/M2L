@@ -40,6 +40,8 @@ class MainController extends Controller
      */
     public function listfraisAction(Request $request) 
     {
+
+        
         $length = $request->get('length');
         $length = $length && ($length != -1) ? $length : 0;
 
@@ -90,6 +92,8 @@ class MainController extends Controller
         $form = $this->get('form.factory')->create(new FraisType(), $frais);
 
         if ($form->handleRequest($request)->isValid()) {
+            
+            $frais->setUser( $this->getUser() );
 
             $em = $this->getDoctrine()->getManager();
 
