@@ -348,7 +348,7 @@ class User extends BaseUser
      * @param \M2L\PagesBundle\Entity\Frais $frais
      * @return User
      */
-    public function addFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    public function addFrais(\M2L\PagesBundle\Entity\Frais $frais)
     {
         $this->frais[] = $frais;
         
@@ -362,7 +362,7 @@ class User extends BaseUser
      *
      * @param \M2L\PagesBundle\Entity\Frais $frais
      */
-    public function removeFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    public function removeFrais(\M2L\PagesBundle\Entity\Frais $frais)
     {
         $this->frais->removeElement($frais);
     }

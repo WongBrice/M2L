@@ -7,8 +7,8 @@ use Doctrine\ORM\EntityRepository;
 /**
  * FraisRepository
  *
+ * Elle permet de récupérer les informations de notre entité Frais en DQL (Doctrine Query Language)
  * Cette classe enregistre notre reqête doctrine en Ajax pour l'entité Frais
- * Elle permet également de récupérer les informations de notre entité Frais en DQL (Doctrine Query Language)
  */
 class FraisRepository extends EntityRepository
 {
@@ -20,8 +20,9 @@ class FraisRepository extends EntityRepository
         $qb 
             ->select('f')
             ->from('M2LPagesBundle:Frais', 'f')
-            ->where('f.user = :user')
-                    ->setParameter('user', '2')
+            ->innerJoin('f.user','u')
+                ->where('f.id = :user')
+                ->setParameter('user', '1')
         ; 
  
         if ($query) { 

@@ -376,4 +376,27 @@ class User extends BaseUser
     {
         return $this->frais;
     }
+
+    /**
+     * Add frais
+     *
+     * @param \M2L\PagesBundle\Entity\Frais $frais
+     * @return User
+     */
+    public function addFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    {
+        $this->frais[] = $frais;
+
+        return $this;
+    }
+
+    /**
+     * Remove frais
+     *
+     * @param \M2L\PagesBundle\Entity\Frais $frais
+     */
+    public function removeFrai(\M2L\PagesBundle\Entity\Frais $frais)
+    {
+        $this->frais->removeElement($frais);
+    }
 }

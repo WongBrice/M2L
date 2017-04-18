@@ -45,9 +45,7 @@ class MainController extends Controller
         $start = $length ? ($start && ($start != -1) ? $start : 0) / $length : 0;
 
         $search = $request->get('search');
-        $filters = [
-            'query' => @$search['value']
-        ];
+        $filters = ['query' => @$search['value']];
 
         $frais = $this->getDoctrine()->getRepository('M2LPagesBundle:Frais')->search(
                 $filters, $start, $length
@@ -103,7 +101,63 @@ class MainController extends Controller
         }
 
         return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
-                    'form' => $form->createView(),
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Elle sert également à modificer les informations persistés dans la table "frais"
+     * par le biais du formulaire qui se trouve sur la vue
+     */
+    public function editfraisAction(Frais $frais, Request $request) 
+    {
+        $form = $this->get('form.factory')->create(new FraisEditType(), $frais);
+
+        if ($form->handleRequest($request)->isValid()) {
+            
+            $frais->setUser( $this->getUser() );
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Note de frais modifiée');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_view', array('id' => $frais->getId())));
+        }
+
+        return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
+            'frais' => $frais,
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Elle sert également à effacer les informations persistés dans la table "frais"
+     * par le biais du formulaire qui se trouve sur la vue
+     */
+    public function deletefraisAction(Frais $frais, Request $request) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->get('form.factory')->create();
+        
+        if ($form->handleRequest($request)->isValid()) {
+            
+            $em->remove($frais);
+            
+            $em->flush();
+            
+            $request->getSession()->getFlashBag()->add('notice', 'Note de frais supprimée');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_view'));
+        }
+
+        return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
+            'frais' => $frais,
+            'form' => $form->createView(),
         ));
     }
     

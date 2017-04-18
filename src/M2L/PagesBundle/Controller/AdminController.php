@@ -39,9 +39,7 @@ class AdminController extends Controller
         $start = $length ? ($start && ($start != -1) ? $start : 0) / $length : 0;
 
         $search = $request->get('search');
-        $filters = [
-            'query' => @$search['value']
-        ];
+        $filters = ['query' => @$search['value']];
 
         $user = $this->getDoctrine()->getRepository('M2LUserBundle:User')->search(
                 $filters, $start, $length
