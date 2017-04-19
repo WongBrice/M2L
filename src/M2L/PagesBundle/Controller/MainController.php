@@ -5,6 +5,7 @@ namespace M2L\PagesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use M2L\PagesBundle\Entity\Frais;
 use M2L\PagesBundle\Form\FraisType;
+use M2L\PagesBundle\Form\FraisEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,7 +29,20 @@ class MainController extends Controller
      */
     public function viewAction() 
     {
-        return $this->render('M2LPagesBundle:Main:view.html.twig');
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('M2LPagesBundle:Frais');
+
+        $listFrais = $repository->findAll($user);
+
+        if (!$listFrais) {
+            throw new NotFoundHttpException("Aucune note trouvée");
+        }
+
+        return $this->render('M2LPagesBundle:Main:view.html.twig', array('listFrais' => $listFrais));
     }
     
     

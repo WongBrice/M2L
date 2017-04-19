@@ -4,9 +4,8 @@ namespace M2L\PagesBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class FraisType extends AbstractType
+class FraisEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -15,15 +14,9 @@ class FraisType extends AbstractType
             ;
     }
     
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function getParent() 
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'M2L\PagesBundle\Entity\Frais',
-        ));
+        return FraisType::class;
     }
-    
-    public function getName()
-    {
-        return 'm2l_pages_frais';
-    }
+
 }

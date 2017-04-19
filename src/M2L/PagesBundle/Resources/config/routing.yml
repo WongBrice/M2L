@@ -27,14 +27,18 @@ m2l_pages_frais:
         page: \d*
         
 m2l_pages_frais_edit:
-    path:    /frais/edit
+    path:    /edit/{id}
     defaults:
         _controller: M2LPagesBundle:Main:editfrais
+    requirements:
+        id: \d+
         
 m2l_pages_frais_delete:
-    path:    /frais/delete
+    path:    /delete/{id}
     defaults:
         _controller: M2LPagesBundle:Main:deletefrais
+    requirements:
+        id: \d+
         
 m2l_pages_contact:
     path:    /contact

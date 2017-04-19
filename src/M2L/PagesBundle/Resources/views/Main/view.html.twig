@@ -15,6 +15,24 @@
             
             <h2>Liste note de frais</h2>
             
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                {% for frais in listFrais %}
+                    <tr>
+                        <td>Trajt : {{ frais.trajet }} </td>
+                        <td>Motif : {{ frais.motif }} </td>
+                        <td>Kilomètres parcourus : {{ frais.km }} km </td>
+                        <td>Coût trajet : {{ frais.cout }} € </td>
+                        <td>Coût péage : {{ frais.peage }} € </td>
+                        <td>Coût repas : {{ frais.repas }} € </td>
+                        <td>Coût hébergement : {{ frais.heberg }} € </td>
+                        <td>Date saisie : {{ frais.createdAt|date('d/m/Y') }} </td>
+                        <td>Utilisateur : {{ frais.user }} </td>
+                        <td></br><a class="link" href="{{ path('m2l_pages_frais_edit', {'id': frais.id}) }}">Modifier</a></td>
+                        <td></br><a class="link" href="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
             <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%"> 
                 <thead> 
                     <tr> 
