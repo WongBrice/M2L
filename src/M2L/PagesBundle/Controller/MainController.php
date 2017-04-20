@@ -8,6 +8,8 @@ use M2L\PagesBundle\Form\FraisType;
 use M2L\PagesBundle\Form\FraisEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
@@ -25,76 +27,41 @@ class MainController extends Controller
     }
     
     /**
-     * Cette fonction retourne vers la vue view.html.twig, qui est partie de la page "Note de Frais"
+     * Cette fonction retourne vers la vue frais.html.twig, qui est la page "Note de Frais"
      */
-    public function viewAction() 
+    public function fraisAction() 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
         
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('M2LPagesBundle:Frais');
 
-        $listFrais = $repository->findAll($user);
+        $listFrais = $repository->findBy(array('user' => $user));
 
         if (!$listFrais) {
             throw new NotFoundHttpException("Aucune note trouvée");
         }
 
-        return $this->render('M2LPagesBundle:Main:view.html.twig', array('listFrais' => $listFrais));
-    }
-    
-    
-    /**
-     * Cette fonction sert à récupérer les informations de la table "frais"
-     * pour les afficher sur la vue view de la page "Note de frais" en ajax
-     */
-    public function listfraisAction(Request $request) 
-    {
-        $length = $request->get('length');
-        $length = $length && ($length != -1) ? $length : 0;
-
-        $start = $request->get('start');
-        $start = $length ? ($start && ($start != -1) ? $start : 0) / $length : 0;
-
-        $search = $request->get('search');
-        $filters = ['query' => @$search['value']];
-
-        $frais = $this->getDoctrine()->getRepository('M2LPagesBundle:Frais')->search(
-                $filters, $start, $length
-        );
-
-        $output = array(
-            'data' => array(),
-            'recordsFiltered' => count($this->getDoctrine()->getRepository('M2LPagesBundle:Frais')->search($filters, 0, false)),
-            'recordsTotal' => count($this->getDoctrine()->getRepository('M2LPagesBundle:Frais')->search(array(), 0, false))
-        );
-
-        foreach ($frais as $frais) 
-        {
-            $output['data'][] = [
-                'trajet' => $frais->getTrajet(),
-                'motif' => $frais->getMotif(),
-                'km' => $frais->getKm(),
-                'cout' => $frais->getCout(),
-                'peage' => $frais->getPeage(),
-                'repas' => $frais->getRepas(),
-                'heberg' => $frais->getHeberg(),
-                'createdAt' => $frais->getCreatedAt()->format('Y/m/d à H:i'),
-            ];
-        }
-
-        return new Response(json_encode($output), 200, ['Content-Type' => 'application/json']);
+        return $this->render('M2LPagesBundle:Main:frais.html.twig', array('listFrais' => $listFrais));
     }
     
     /**
-     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue add.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à récupérer les informations par le biais du formulaire qui se trouve sur la vue
      * et qui seront persistés dans la table "frais"
      */
-    public function fraisAction(Request $request) 
+    public function addfraisAction(Request $request) 
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        
         $frais = new Frais();
 
         $form = $this->get('form.factory')->create(new FraisType(), $frais);
@@ -111,16 +78,16 @@ class MainController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'Note de frais ajoutée');
             
-            return $this->redirect($this->generateUrl('m2l_pages_view', array('id' => $frais->getId())));
+            return $this->redirect($this->generateUrl('m2l_pages_frais', array('id' => $frais->getId())));
         }
 
-        return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:add.html.twig', array(
             'form' => $form->createView(),
         ));
     }
     
     /**
-     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue edit.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à modificer les informations persistés dans la table "frais"
      * par le biais du formulaire qui se trouve sur la vue
      */
@@ -138,17 +105,17 @@ class MainController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'Note de frais modifiée');
             
-            return $this->redirect($this->generateUrl('m2l_pages_view', array('id' => $frais->getId())));
+            return $this->redirect($this->generateUrl('m2l_pages_frais', array('id' => $frais->getId())));
         }
 
-        return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:edit.html.twig', array(
             'frais' => $frais,
             'form' => $form->createView(),
         ));
     }
     
     /**
-     * Cette fonction retourne vers la vue frais.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue delete.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à effacer les informations persistés dans la table "frais"
      * par le biais du formulaire qui se trouve sur la vue
      */
@@ -158,7 +125,7 @@ class MainController extends Controller
 
         $form = $this->get('form.factory')->create();
         
-        if ($form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             
             $em->remove($frais);
             
@@ -166,10 +133,10 @@ class MainController extends Controller
             
             $request->getSession()->getFlashBag()->add('notice', 'Note de frais supprimée');
             
-            return $this->redirect($this->generateUrl('m2l_pages_view'));
+            return $this->redirect($this->generateUrl('m2l_pages_frais'));
         }
 
-        return $this->render('M2LPagesBundle:Main:frais.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:delete.html.twig', array(
             'frais' => $frais,
             'form' => $form->createView(),
         ));

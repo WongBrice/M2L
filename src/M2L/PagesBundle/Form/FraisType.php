@@ -32,6 +32,6 @@ class FraisType extends AbstractType
     
     public function getName()
     {
-        return 'm2l_pages_frais';
+        return 'm2l_pages_frais_add';
     }
 }

@@ -1,46 +1,53 @@
 {% extends 'M2LPagesBundle::layout.html.twig' %}
 
 {% block body %}
+    
+    {% for type, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                {{ message|trans({}, 'M2LPagesBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
     <div class="jumbotron">
         <div class="container">
-            <form action="{{ path('m2l_pages_frais') }}" method="POST">
-
-                <h2>Saisie note de frais</h2>
-                
-                {{ form_widget(form._token) }}
-                
-                </br></br>{{ form_widget(form.trajet, { 'attr': {'placeholder': 'Trajet'} }) }}
-                {{ form_errors(form.trajet) }}
-                
-                </br></br>{{ form_widget(form.motif, { 'attr': {'placeholder': 'Motif'} }) }}
-                {{ form_errors(form.motif) }}
-
-                </br></br>{{ form_widget(form.km, { 'attr': {'placeholder': 'Kilomètres parcourus'} }) }}
-                {{ form_errors(form.km) }}
-
-                </br></br>{{ form_widget(form.cout, { 'attr': {'placeholder': 'Coût trajet'} }) }}
-                {{ form_errors(form.cout) }}
-                
-                </br></br>{{ form_widget(form.peage, { 'attr': {'placeholder': 'Frais péage'} }) }}
-                {{ form_errors(form.peage) }}
-
-                </br></br>{{ form_widget(form.repas, { 'attr': {'placeholder': 'Frais repas'} }) }}
-                {{ form_errors(form.repas) }}
-
-                </br></br>{{ form_widget(form.heberg, { 'attr': {'placeholder': 'Frais hébergement'} }) }}
-                {{ form_errors(form.heberg) }}
-
-                </br>{{ form_widget(form) }}
-
-                <div>
-                    </br></br><input type="submit" id="_submit" value="Valider" />
-                </div>
-                
-            </form>
-                
-            </br><a class="link" href="{{ path('m2l_pages_view') }}">Retour à la liste des notes de frais</a>
-                
+            
+            <h2>Liste note de frais</h2>
+            
+            </br><table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <tr>
+                    <td><p>Utilisateur</p></td>
+                    <td><p>Trajt</p></td>
+                    <td><p>Motif</p></td>
+                    <td><p>Kilomètres parcourus</p></td>
+                    <td><p>Coût trajet</p></td>
+                    <td><p>Coût péage</p></td>
+                    <td><p>Coût repas</p></td>
+                    <td><p>Coût hébergement</p></td>
+                    <td><p>Date saisie</p></td>
+                    <td><p>Modifier frais</p></td>
+                    <td><p>Supprimer frais</p></td>
+                </tr>
+                {% for frais in listFrais %}
+                    <tr>
+                        <td>{{ frais.user }} </td>
+                        <td>{{ frais.trajet }} </td>
+                        <td>{{ frais.motif }} </td>
+                        <td>{{ frais.km }} km </td>
+                        <td>{{ frais.cout }} € </td>
+                        <td>{{ frais.peage }} € </td>
+                        <td>{{ frais.repas }} € </td>
+                        <td>{{ frais.heberg }} € </td>
+                        <td>{{ frais.createdAt|date('d/m/Y') }} </td>
+                        <td><a class="link" href="{{ path('m2l_pages_frais_edit', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/edit.png') }}" /></a></td>
+                        <td><a class="link" href="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/delete.png') }}" /></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            </br><a class="link" href="{{ path('m2l_pages_frais_add') }}">Saisir note de frais</a>
+   
         </div>
     </div>
 

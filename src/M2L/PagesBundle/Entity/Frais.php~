@@ -78,7 +78,7 @@ class Frais
     private $createdAt;
     
     /**
-     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="frais", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="frais", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

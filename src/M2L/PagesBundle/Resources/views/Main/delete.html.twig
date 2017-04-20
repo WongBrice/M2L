@@ -1,0 +1,30 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form action="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}" method="POST">
+
+                <h2>Suppression note de frais</h2>
+                
+                </br><p>
+                    Etes-vous certain de vouloir supprimer la note de frais du "{{ frais.createdAt|date('d/m/Y') }}" ?
+                </p>
+                
+                {{ form_widget(form._token) }}           
+
+                {{ form_widget(form) }}
+
+                <div>
+                    </br><input type="submit" id="_submit" value="Supprimer" />
+                </div>
+                
+            </form>
+                
+            </br><a class="link" href="{{ path('m2l_pages_frais') }}">Retour à la liste des notes de frais</a>
+                
+        </div>
+    </div>
+
+{% endblock %}
