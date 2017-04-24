@@ -1,0 +1,53 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form action="{{ path('m2l_pages_adherent_add') }}" method="POST">
+
+                <h2>Saisie nouvel adhérent</h2>
+                
+                {{ form_widget(form._token) }}
+                
+                </br></br>{{ form_widget(form.adh_first_name, { 'attr': {'placeholder': 'Prénom'} }) }}
+                {{ form_errors(form.adh_first_name) }}
+
+                </br></br>{{ form_widget(form.adh_last_name, { 'attr': {'placeholder': 'Nom'} }) }}
+                {{ form_errors(form.adh_last_name) }}
+
+                </br></br>{{ form_widget(form.adh_birthdate, { 'attr': {'placeholder': 'Date de Naissance', 'class': 'flatpickr'} }) }}
+                {{ form_errors(form.adh_birthdate) }}
+
+                </br></br>{{ form_widget(form.adh_address, { 'attr': {'placeholder': 'Adresse'} }) }}
+                {{ form_errors(form.adh_address) }}
+
+                </br></br>{{ form_widget(form.adh_city, { 'attr': {'placeholder': 'Commune'} }) }}
+                {{ form_errors(form.adh_city) }}
+
+                </br></br>{{ form_widget(form.adh_postal_code, { 'attr': {'placeholder': 'Code Postal'} }) }}
+                {{ form_errors(form.adh_postal_code) }}
+
+                </br></br>{{ form_widget(form.adh_phone, { 'attr': {'placeholder': 'N° de Téléphone'} }) }}
+                {{ form_errors(form.adh_phone) }}
+
+                </br></br>{{ form_widget(form.adh_licence, { 'attr': {'placeholder': 'N° de Licence'} }) }}
+                {{ form_errors(form.adh_licence) }}
+                
+                </br></br>{{ form_widget(form.adh_ligue, { 'attr': {'placeholder': 'Votre Ligue'} }) }}
+                {{ form_errors(form.adh_ligue) }}
+
+                </br>{{ form_widget(form) }}
+
+                <div>
+                    </br></br><input type="submit" id="_submit" value="Valider" />
+                </div>
+                
+            </form>
+                
+            </br><a class="link" href="{{ path('m2l_pages_adherent') }}">Retour à la liste des adhérents</a>
+                
+        </div>
+    </div>
+
+{% endblock %}

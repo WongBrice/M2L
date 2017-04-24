@@ -4,12 +4,12 @@
 
     <div class="jumbotron">
         <div class="container">
-            <form action="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}" method="POST">
+            <form action="{{ path('m2l_pages_adherent_delete', {'id': adherent.id}) }}" method="POST">
 
-                <h2>Suppression note de frais</h2>
+                <h2>Suppression adhérent</h2>
                 
                 </br><p>
-                    Etes-vous certain de vouloir supprimer la note de frais du "{{ frais.createdAt|date('d/m/Y') }}" ?
+                    Etes-vous certain de vouloir supprimer l'adhérent {{ adherent.adhfirstName }} {{ adherent.adhlastName }}?
                 </p>
                 
                 {{ form_widget(form._token) }}           
@@ -22,7 +22,7 @@
                 
             </form>
                 
-            </br><a class="link" href="{{ path('m2l_pages_frais') }}">Retour à la liste des notes de frais</a>
+            </br><a class="link" href="{{ path('m2l_pages_adherent') }}">Retour à la liste des adhérents</a>
                 
         </div>
     </div>

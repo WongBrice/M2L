@@ -20,7 +20,7 @@ class FraisType extends AbstractType
                 ->add('peage', 'number')
                 ->add('repas', 'number')
                 ->add('heberg', 'number')
-                ;
+        ;
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)

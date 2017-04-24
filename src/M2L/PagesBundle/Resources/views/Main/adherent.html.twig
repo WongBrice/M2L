@@ -1,0 +1,54 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+    
+    <div class="jumbotron">
+        <div class="container">
+            
+            <h2>Liste des adhérents pris en charge</h2>
+            
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'M2LPagesBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            
+            </br><table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                {% for adherent in listAdherent %}
+                    <tr>
+                        <td><p>Prénom</p></td>
+                        <td><p>Nom</p></td>
+                        <td><p>Date de naissance</p></td>
+                        <td><p>Adresse</p></td>
+                        <td><p>Commune</p></td>
+                        <td><p>Code postal</p></td>
+                        <td><p>N° de téléphone</p></td>
+                        <td><p>N° de licence</p></td>
+                        <td><p>Ligue</p></td>
+                        <td><p>Modifier adhérent</p></td>
+                        <td><p>Supprimer adhérent</p></td>
+                    </tr>
+                    <tr>
+                        <td>{{ adherent.adhfirstName }} </td>
+                        <td>{{ adherent.adhlastName }} </td>
+                        <td>{{ adherent.adhBirthdate|date('d/m/Y') }}</td>
+                        <td>{{ adherent.adhAddress }}</td>
+                        <td>{{ adherent.adhCity }}</td>
+                        <td>{{ adherent.adhPostalCode }}</td>
+                        <td>{{ adherent.adhPhone }}</td>
+                        <td>{{ adherent.adhLicence }}</td>
+                        <td>{{ adherent.adhLigue }}</td>
+                        <td><a class="link" href="{{ path('m2l_pages_adherent_edit', {'id': adherent.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/edit.png') }}" /></a></td>
+                        <td><a class="link" href="{{ path('m2l_pages_adherent_delete', {'id': adherent.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/delete.png') }}" /></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            </br><a class="link" href="{{ path('m2l_pages_adherent_add') }}">Saisir un nouvel adhérent</a>
+   
+        </div>
+    </div>
+
+{% endblock %}

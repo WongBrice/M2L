@@ -4,10 +4,12 @@ namespace M2L\PagesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use M2L\PagesBundle\Entity\Frais;
+use M2L\PagesBundle\Entity\Adherent;
 use M2L\PagesBundle\Form\FraisType;
+use M2L\PagesBundle\Form\AdherentType;
 use M2L\PagesBundle\Form\FraisEditType;
+use M2L\PagesBundle\Form\AdherentEditType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 
@@ -29,7 +31,7 @@ class MainController extends Controller
     /**
      * Cette fonction retourne vers la vue frais.html.twig, qui est la page "Note de Frais"
      */
-    public function fraisAction() 
+    public function fraisAction(Request $request) 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -42,16 +44,16 @@ class MainController extends Controller
                 ->getRepository('M2LPagesBundle:Frais');
 
         $listFrais = $repository->findBy(array('user' => $user));
-
+        
         if (!$listFrais) {
-            throw new NotFoundHttpException("Aucune note trouvée");
+            $request->getSession()->getFlashBag()->add('notice', 'Liste vide');
         }
 
         return $this->render('M2LPagesBundle:Main:frais.html.twig', array('listFrais' => $listFrais));
     }
     
     /**
-     * Cette fonction retourne vers la vue add.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue add_frais.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à récupérer les informations par le biais du formulaire qui se trouve sur la vue
      * et qui seront persistés dans la table "frais"
      */
@@ -81,13 +83,13 @@ class MainController extends Controller
             return $this->redirect($this->generateUrl('m2l_pages_frais', array('id' => $frais->getId())));
         }
 
-        return $this->render('M2LPagesBundle:Main:add.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:add_frais.html.twig', array(
             'form' => $form->createView(),
         ));
     }
     
     /**
-     * Cette fonction retourne vers la vue edit.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue edit_frais.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à modificer les informations persistés dans la table "frais"
      * par le biais du formulaire qui se trouve sur la vue
      */
@@ -108,14 +110,14 @@ class MainController extends Controller
             return $this->redirect($this->generateUrl('m2l_pages_frais', array('id' => $frais->getId())));
         }
 
-        return $this->render('M2LPagesBundle:Main:edit.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:edit_frais.html.twig', array(
             'frais' => $frais,
             'form' => $form->createView(),
         ));
     }
     
     /**
-     * Cette fonction retourne vers la vue delete.html.twig, qui est une partie de la page "Note de frais"
+     * Cette fonction retourne vers la vue delete_frais.html.twig, qui est une partie de la page "Note de frais"
      * Elle sert également à effacer les informations persistés dans la table "frais"
      * par le biais du formulaire qui se trouve sur la vue
      */
@@ -136,8 +138,124 @@ class MainController extends Controller
             return $this->redirect($this->generateUrl('m2l_pages_frais'));
         }
 
-        return $this->render('M2LPagesBundle:Main:delete.html.twig', array(
+        return $this->render('M2LPagesBundle:Main:delete_frais.html.twig', array(
             'frais' => $frais,
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue adherent.html.twig, qui est la page "Espace Représentant"
+     */
+    public function adherentAction(Request $request) 
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('M2LPagesBundle:Adherent');
+
+        $listAdherent = $repository->findBy(array('user' => $user));
+        
+        if (!$listAdherent) {
+            $request->getSession()->getFlashBag()->add('notice', 'Liste vide');
+        }
+
+        return $this->render('M2LPagesBundle:Main:adherent.html.twig', array('listAdherent' => $listAdherent));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue add_adherent.html.twig, qui est une partie de la page "Espace Représentant"
+     * Elle sert également à récupérer les informations par le biais du formulaire qui se trouve sur la vue
+     * et qui seront persistés dans la table "adherent"
+     */
+    public function addadherentAction(Request $request) 
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        
+        $adherent = new Adherent();
+
+        $form = $this->get('form.factory')->create(new AdherentType(), $adherent);
+
+        if ($form->handleRequest($request)->isValid()) {
+            
+            $adherent->setUser( $this->getUser() );
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($adherent);
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Adhérent ajouté');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_adherent', array('id' => $adherent->getId())));
+        }
+
+        return $this->render('M2LPagesBundle:Main:add_adherent.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue edit_adherent.html.twig, qui est une partie de la page "Espace Représentant"
+     * Elle sert également à modificer les informations persistés dans la table "adherent"
+     * par le biais du formulaire qui se trouve sur la vue
+     */
+    public function editadherentAction(Adherent $adherent, Request $request) 
+    {
+        $form = $this->get('form.factory')->create(new AdherentEditType(), $adherent);
+
+        if ($form->handleRequest($request)->isValid()) {
+            
+            $adherent->setUser( $this->getUser() );
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Adhérent modifié');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_adherent', array('id' => $adherent->getId())));
+        }
+
+        return $this->render('M2LPagesBundle:Main:edit_adherent.html.twig', array(
+            'adherent' => $adherent,
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue delete_adherent.html.twig, qui est une partie de la page "Espace Représentant"
+     * Elle sert également à effacer les informations persistés dans la table "adherent"
+     * par le biais du formulaire qui se trouve sur la vue
+     */
+    public function deleteadherentAction(Adherent $adherent, Request $request) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->get('form.factory')->create();
+        
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            
+            $em->remove($adherent);
+            
+            $em->flush();
+            
+            $request->getSession()->getFlashBag()->add('notice', 'Adhérent supprimé');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_adherent'));
+        }
+
+        return $this->render('M2LPagesBundle:Main:delete_adherent.html.twig', array(
+            'adherent' => $adherent,
             'form' => $form->createView(),
         ));
     }

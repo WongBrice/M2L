@@ -97,6 +97,11 @@ class User extends BaseUser
      */
     protected $frais;
     
+    /**
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="adh_user")
+     */
+    protected $adherent;
+    
     public function __construct()
     {
        parent::__construct();
@@ -343,31 +348,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add frais
-     *
-     * @param \M2L\PagesBundle\Entity\Frais $frais
-     * @return User
-     */
-    public function addFrais(\M2L\PagesBundle\Entity\Frais $frais)
-    {
-        $this->frais[] = $frais;
-        
-        $frais->setUser($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove frais
-     *
-     * @param \M2L\PagesBundle\Entity\Frais $frais
-     */
-    public function removeFrais(\M2L\PagesBundle\Entity\Frais $frais)
-    {
-        $this->frais->removeElement($frais);
-    }
-
-    /**
      * Get frais
      *
      * @return \Doctrine\Common\Collections\Collection 
@@ -398,5 +378,38 @@ class User extends BaseUser
     public function removeFrai(\M2L\PagesBundle\Entity\Frais $frais)
     {
         $this->frais->removeElement($frais);
+    }
+    
+    /**
+     * Get adherent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdherent()
+    {
+        return $this->adherent;
+    }
+
+    /**
+     * Add adherent
+     *
+     * @param \M2L\PagesBundle\Entity\Adherent $adherent
+     * @return User
+     */
+    public function addAdherent(\M2L\PagesBundle\Entity\Adherent $adherent)
+    {
+        $this->adherent[] = $adherent;
+
+        return $this;
+    }
+
+    /**
+     * Remove adherent
+     *
+     * @param \M2L\PagesBundle\Entity\Adherent $adherent
+     */
+    public function removeAdherent(\M2L\PagesBundle\Entity\Adherent $adherent)
+    {
+        $this->adherent->removeElement($adherent);
     }
 }
