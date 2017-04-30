@@ -37,6 +37,11 @@ a
     text-align: center;
 }
 
+.container form div.col-sm-10
+{
+    width: 100%;
+}
+
 .container input.form-control
 {
     display: table-row;

@@ -4,7 +4,10 @@ security:
         M2L\UserBundle\Entity\User: sha512
         
     role_hierarchy:
-        ROLE_ADMIN:    [ROLE_DEFAULT, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADHERENT:    [ROLE_DEFAULT]
+        ROLE_REPRESENTANT:    [ROLE_ADHERENT]
+        ROLE_TRESORIER:    [ROLE_ADHERENT]
+        ROLE_ADMIN: [ROLE_TRESORIER, ROLE_REPRESENTANT, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         main:

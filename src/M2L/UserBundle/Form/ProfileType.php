@@ -33,12 +33,6 @@ class ProfileType extends AbstractType
                         'Judo' => 'Judo',
                     )
                 ))
-                ->add('type', 'choice', array(
-                    'choices' => array(
-                        'Adhérent' => 'Adhérent',
-                        'Représentant' => 'Représentant',
-                    )
-                ))
                 ;
     }
 

@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
     
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_TRESORIER')")
      * Cette annotation "@Security" sert à restreindre l'accès à la fonction
      * à ceux qui ne possèdent pas le role "ROLE_ADMIN".
      * Cette fonction retourne vers la vue tresorier.html.twig, qui est la page "Espace tresorier"
@@ -26,7 +26,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_TRESORIER')")
      * Cette fonction sert à récupérer les informations de la table "user"
      * pour les afficher sur la vue tresorier de la page "Espace tresorier" en ajax
      */
@@ -65,7 +65,6 @@ class AdminController extends Controller
                 'phone' => $user->getPhone(),
                 'licence' => $user->getLicence(),
                 'ligue' => $user->getLigue(),
-                'type' => $user->getType(),
             ];
         }
 

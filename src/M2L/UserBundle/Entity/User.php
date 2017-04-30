@@ -86,19 +86,12 @@ class User extends BaseUser
     protected $ligue;
     
     /**
-     * @var array
-     *
-     * @ORM\Column(name="type", type="array", length=255)
-     */
-    protected $type;
-    
-    /**
      * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Frais", mappedBy="user")
      */
     protected $frais;
     
     /**
-     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="adh_user")
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="user")
      */
     protected $adherent;
     
@@ -322,29 +315,6 @@ class User extends BaseUser
     public function getLigue()
     {
         return $this->ligue;
-    }
-
-    /**
-     * Set type
-     *
-     * @param array $type
-     * @return User
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return array 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**

@@ -39,7 +39,12 @@
                             <li><a href="{{ path('m2l_pages_home') }}">Accueil</a></li>
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li><a href="{{ path('fos_user_profile_show') }}">Profil : {{ app.user.username }}</a></li>
+                            {% if is_granted('ROLE_REPRESENTANT') %}
                                 <li><a href="{{ path('m2l_pages_adherent') }}">Espace Représentant</a></li>
+                            {% endif %}
+                            {% if is_granted('ROLE_TRESORIER') %}
+                                <li><a href="{{ path('m2l_pages_tresorier') }}">Espace Tresorier</a></li>
+                            {% endif %}
                                 <li><a href="{{ path('m2l_pages_frais') }}">Note de frais</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                             {% else %}
@@ -47,9 +52,6 @@
                                 <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                             {% endif %}
                             <li><a href="{{ path('m2l_pages_contact') }}">Contact</a></li>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="{{ path('m2l_pages_tresorier') }}">Espace Tresorier</a></li>
-                            {% endif %}
                             {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                                 <li><a href="{{ path('m2l_pages_home', {'_switch_user': '_exit'}) }}">Retour à Admin</a></li>
                             {% endif %}

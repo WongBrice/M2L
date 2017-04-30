@@ -33,12 +33,17 @@ class RegistrationType extends AbstractType
                         'Judo' => 'Judo',
                     )
                 ))
-                ->add('type', 'choice', array(
-                    'choices' => array(
-                        'Adhérent' => 'Adhérent',
-                        'Représentant' => 'Représentant',
-                    )
-                ))
+                ->add('roles', 'collection', array(
+                   'type' => 'choice',
+                   'options' => array(
+                       'label' => false,
+                       'choices' => array(
+                           'ROLE_ADHERENT' => 'Adhérent',
+                           'ROLE_REPRESENTANT' => 'Représentant',
+                           'ROLE_TRESORIER' => 'Trésorier'
+                       )
+                   )
+               ))
                 ;
     }
     

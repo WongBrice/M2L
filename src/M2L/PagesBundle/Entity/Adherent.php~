@@ -313,13 +313,13 @@ class Adherent
      * @param \M2L\UserBundle\Entity\User $user
      * @return Adherent
      */
-    public function setAdhUser(\M2L\UserBundle\Entity\User $user = null)
+    public function setUser(\M2L\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
         return $this;
     }
-
+    
     /**
      * Get user
      *
@@ -328,18 +328,5 @@ class Adherent
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \M2L\UserBundle\Entity\User $user
-     * @return Adherent
-     */
-    public function setUser(\M2L\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
     }
 }
