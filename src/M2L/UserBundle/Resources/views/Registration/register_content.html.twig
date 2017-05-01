@@ -35,10 +35,10 @@
     </br></br>{{ form_widget(form.ligue, { 'attr': {'placeholder': 'Votre Ligue'} }) }}
     {{ form_errors(form.ligue) }}
     
-    </br></br>{{ form_widget(form.type, { 'attr': {'placeholder': 'Votre Statut'} }) }}
-    {{ form_errors(form.type) }}
+    </br>{{ form_widget(form.roles, { 'attr': {'placeholder': 'Votre Statut'} }) }}
+    {{ form_errors(form.roles) }}
     
-    </br></br>{{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Votre Mot de Passe'} }) }}
+    </br></br></br></br>{{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Votre Mot de Passe'} }) }}
     {{ form_errors(form.plainPassword.first) }}
     
     </br></br>{{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmation du Mot de Passe'} }) }}

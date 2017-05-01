@@ -14,11 +14,13 @@ class FraisType extends AbstractType
     {
         $builder
                 ->add('trajet', TextType::class)
+                ->add('motif', TextType::class)
                 ->add('km', IntegerType::class)
+                ->add('cout', 'number')
                 ->add('peage', 'number')
                 ->add('repas', 'number')
                 ->add('heberg', 'number')
-                ;
+        ;
     }
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -30,6 +32,6 @@ class FraisType extends AbstractType
     
     public function getName()
     {
-        return 'm2l_pages_frais';
+        return 'm2l_pages_frais_add';
     }
 }

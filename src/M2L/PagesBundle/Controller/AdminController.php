@@ -3,23 +3,45 @@
 namespace M2L\PagesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use M2L\PagesBundle\Entity\Frais;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
+ * et à ceux possédant le role "ROLE_TRESORIER".
+ */
 class AdminController extends Controller 
 {
     
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_TRESORIER')")
+     * Cette annotation "@Security" sert à restreindre l'accès à la fonction
+     * à ceux qui ne possèdent pas le role "ROLE_TRESORIER".
+     * Cette fonction retourne vers la vue tresorier.html.twig, qui est la page "Espace trésorier"
      */
-    public function tresorierAction() 
+    public function tresorierAction(Request $request) 
     {
-        return $this->render('M2LPagesBundle:Main:tresorier.html.twig');
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('M2LPagesBundle:Frais');
+
+        $listFrais = $repository->findAll(array('validate' => NULL));
+        
+        if (!$listFrais) 
+        {
+            $request->getSession()->getFlashBag()->add('notice', 'Liste vide');
+        }
+
+        return $this->render('M2LPagesBundle:Main:tresorier.html.twig', array('listFrais' => $listFrais));
     }
 
     /**
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_TRESORIER')")
+     * Cette fonction sert à récupérer les informations de la table "user"
+     * pour les afficher sur la vue tresorier de la page "Espace trésorier" en ajax
      */
     public function listAction(Request $request) 
     {
@@ -30,9 +52,7 @@ class AdminController extends Controller
         $start = $length ? ($start && ($start != -1) ? $start : 0) / $length : 0;
 
         $search = $request->get('search');
-        $filters = [
-            'query' => @$search['value']
-        ];
+        $filters = ['query' => @$search['value']];
 
         $user = $this->getDoctrine()->getRepository('M2LUserBundle:User')->search(
                 $filters, $start, $length
@@ -58,7 +78,6 @@ class AdminController extends Controller
                 'phone' => $user->getPhone(),
                 'licence' => $user->getLicence(),
                 'ligue' => $user->getLigue(),
-                'type' => $user->getType(),
             ];
         }
 

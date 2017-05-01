@@ -5,7 +5,52 @@
     <div class="jumbotron">
         <div class="container">
             
-            <h2>Liste des adhérents</h2>
+            <h2>Note de frais à valider</h2>
+            
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'M2LPagesBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            
+            </br><table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                {% for frais in listFrais %}
+                    <tr>
+                        <td><p>Déclarant</p></td>
+                        <td><p>Trajet</p></td>
+                        <td><p>Motif</p></td>
+                        <td><p>Kilomètres parcourus</p></td>
+                        <td><p>Coût trajet</p></td>
+                        <td><p>Coût péage</p></td>
+                        <td><p>Coût repas</p></td>
+                        <td><p>Coût hébergement</p></td>
+                        <td><p>Date saisie</p></td>
+                        <td><p>Validité</p></td>
+                        <td><p>Valider frais</p></td>
+                        <td><p>Supprimer frais</p></td>
+                    </tr>
+                    <tr>
+                        <td>{{ frais.user }}</td>
+                        <td>{{ frais.trajet }}</td>
+                        <td>{{ frais.motif }}</td>
+                        <td>{{ frais.km }} km</td>
+                        <td>{{ frais.cout }} €</td>
+                        <td>{{ frais.peage }} €</td>
+                        <td>{{ frais.repas }} €</td>
+                        <td>{{ frais.heberg }} €</td>
+                        <td>{{ frais.createdAt|date('d/m/Y') }}</td>
+                        <td>{{ frais.validate }}</td>
+                        <td><a class="link" href="{{ path('m2l_pages_frais_validate', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/validate.png') }}" /></a></td>
+                        <td><a class="link" href="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/delete.png') }}" /></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            </br>
+            
+            <h2>Liste des adhérents inscrits</h2>
             
             <table id="list" class="table table-striped table-bordered" cellspacing="0" width="100%"> 
                 <thead> 
@@ -21,7 +66,6 @@
                         <th>N° de téléphone</th>
                         <th>N° de licence</th>
                         <th>Ligue</th>
-                        <th>Statut</th>
                     </tr> 
                 </thead> 
                 <tbody>
@@ -45,6 +89,12 @@
             "serverSide": true,
             "scrollX": true,
             "scrollCollapse": true,
+            "language": 
+             {
+                "zeroRecords": "La liste est vide",
+                "infoEmpty": "La liste est vide",
+                "search": "Recherche"
+            },
             "paging":   false,
             "ordering": false,
             "info":     false,
@@ -62,8 +112,7 @@
                 {"data": "postal_code"},
                 {"data": "phone"},
                 {"data": "licence"},
-                {"data": "ligue"},
-                {"data": "type"}
+                {"data": "ligue"}
             ],
             "order": [[1, 'asc']]
         });

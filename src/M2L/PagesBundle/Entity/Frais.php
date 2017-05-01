@@ -27,6 +27,13 @@ class Frais
      * @ORM\Column(name="trajet", type="string", length=100)
      */
     private $trajet;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="motif", type="string", length=100)
+     */
+    private $motif;
 
     /**
      * @var int
@@ -34,6 +41,13 @@ class Frais
      * @ORM\Column(name="km", type="integer")
      */
     private $km;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cout", type="float")
+     */
+    private $cout;
 
     /**
      * @var float
@@ -63,9 +77,22 @@ class Frais
      */
     private $createdAt;
     
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="validate", type="array", length=255, nullable=true)
+     */
+    private $validate;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="frais", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+    
     public function __construct()
     {
-    $this->createdAt = new \Datetime();
+        $this->createdAt = new \Datetime();
     }
 
     /**
@@ -100,6 +127,29 @@ class Frais
     {
         return $this->trajet;
     }
+    
+    /**
+     * Set motif
+     *
+     * @param string $motif
+     * @return Frais
+     */
+    public function setMotif($motif)
+    {
+        $this->motif = $motif;
+
+        return $this;
+    }
+
+    /**
+     * Get motif
+     *
+     * @return string 
+     */
+    public function getMotif()
+    {
+        return $this->motif;
+    }
 
     /**
      * Set km
@@ -122,6 +172,29 @@ class Frais
     public function getKm()
     {
         return $this->km;
+    }
+    
+    /**
+     * Set cout
+     *
+     * @param float $cout
+     * @return Frais
+     */
+    public function setCout($cout)
+    {
+        $this->cout = $cout;
+
+        return $this;
+    }
+
+    /**
+     * Get cout
+     *
+     * @return float 
+     */
+    public function getCout()
+    {
+        return $this->cout;
     }
 
     /**
@@ -214,5 +287,51 @@ class Frais
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    
+    /**
+     * Set validate
+     *
+     * @param array $validate
+     * @return Frais
+     */
+    public function setValidate($validate)
+    {
+        $this->validate = $validate;
+
+        return $this;
+    }
+
+    /**
+     * Get validate
+     *
+     * @return array 
+     */
+    public function getValidate()
+    {
+        return $this->validate;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \M2L\UserBundle\Entity\User $user
+     * @return Frais
+     */
+    public function setUser(\M2L\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \M2L\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

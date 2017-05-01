@@ -1,0 +1,30 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form action="{{ path('m2l_pages_adherent_delete', {'id': adherent.id}) }}" method="POST">
+
+                <h2>Suppression adhérent</h2>
+                
+                </br><p>
+                    Etes-vous certain de vouloir supprimer l'adhérent {{ adherent.adhfirstName }} {{ adherent.adhlastName }}?
+                </p>
+                
+                {{ form_widget(form._token) }}           
+
+                {{ form_widget(form) }}
+
+                <div>
+                    </br><input type="submit" id="_submit" value="Supprimer" />
+                </div>
+                
+            </form>
+                
+            </br><a class="link" href="{{ path('m2l_pages_adherent') }}">Retour à la liste des adhérents</a>
+                
+        </div>
+    </div>
+
+{% endblock %}

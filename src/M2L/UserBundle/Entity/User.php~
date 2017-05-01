@@ -86,11 +86,14 @@ class User extends BaseUser
     protected $ligue;
     
     /**
-     * @var array
-     *
-     * @ORM\Column(name="type", type="array", length=255)
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Frais", mappedBy="user")
      */
-    protected $type;
+    protected $frais;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="adh_user")
+     */
+    protected $adherent;
     
     public function __construct()
     {
@@ -315,25 +318,68 @@ class User extends BaseUser
     }
 
     /**
-     * Set type
+     * Get frais
      *
-     * @param array $type
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFrais()
+    {
+        return $this->frais;
+    }
+
+    /**
+     * Add frais
+     *
+     * @param \M2L\PagesBundle\Entity\Frais $frais
      * @return User
      */
-    public function setType($type)
+    public function addFrai(\M2L\PagesBundle\Entity\Frais $frais)
     {
-        $this->type = $type;
+        $this->frais[] = $frais;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Remove frais
      *
-     * @return array 
+     * @param \M2L\PagesBundle\Entity\Frais $frais
      */
-    public function getType()
+    public function removeFrai(\M2L\PagesBundle\Entity\Frais $frais)
     {
-        return $this->type;
+        $this->frais->removeElement($frais);
+    }
+    
+    /**
+     * Get adherent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdherent()
+    {
+        return $this->adherent;
+    }
+
+    /**
+     * Add adherent
+     *
+     * @param \M2L\PagesBundle\Entity\Adherent $adherent
+     * @return User
+     */
+    public function addAdherent(\M2L\PagesBundle\Entity\Adherent $adherent)
+    {
+        $this->adherent[] = $adherent;
+
+        return $this;
+    }
+
+    /**
+     * Remove adherent
+     *
+     * @param \M2L\PagesBundle\Entity\Adherent $adherent
+     */
+    public function removeAdherent(\M2L\PagesBundle\Entity\Adherent $adherent)
+    {
+        $this->adherent->removeElement($adherent);
     }
 }

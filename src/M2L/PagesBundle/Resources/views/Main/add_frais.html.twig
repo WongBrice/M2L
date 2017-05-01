@@ -1,0 +1,47 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form action="{{ path('m2l_pages_frais_add') }}" method="POST">
+
+                <h2>Saisie note de frais</h2>
+                
+                {{ form_widget(form._token) }}
+                
+                </br></br>{{ form_widget(form.trajet, { 'attr': {'placeholder': 'Trajet'} }) }}
+                {{ form_errors(form.trajet) }}
+                
+                </br></br>{{ form_widget(form.motif, { 'attr': {'placeholder': 'Motif'} }) }}
+                {{ form_errors(form.motif) }}
+
+                </br></br>{{ form_widget(form.km, { 'attr': {'placeholder': 'Kilomètres parcourus'} }) }}
+                {{ form_errors(form.km) }}
+
+                </br></br>{{ form_widget(form.cout, { 'attr': {'placeholder': 'Coût trajet'} }) }}
+                {{ form_errors(form.cout) }}
+                
+                </br></br>{{ form_widget(form.peage, { 'attr': {'placeholder': 'Frais péage'} }) }}
+                {{ form_errors(form.peage) }}
+
+                </br></br>{{ form_widget(form.repas, { 'attr': {'placeholder': 'Frais repas'} }) }}
+                {{ form_errors(form.repas) }}
+
+                </br></br>{{ form_widget(form.heberg, { 'attr': {'placeholder': 'Frais hébergement'} }) }}
+                {{ form_errors(form.heberg) }}
+
+                </br>{{ form_widget(form) }}
+
+                <div>
+                    </br></br><input type="submit" id="_submit" value="Valider" />
+                </div>
+                
+            </form>
+                
+            </br><a class="link" href="{{ path('m2l_pages_frais') }}">Retour à la liste des notes de frais</a>
+                
+        </div>
+    </div>
+
+{% endblock %}

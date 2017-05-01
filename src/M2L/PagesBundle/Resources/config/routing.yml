@@ -5,34 +5,6 @@ m2l_pages_home:
     requirements:
         page: \d*
         
-m2l_pages_view:
-    path:    /view
-    defaults:
-        _controller: M2LPagesBundle:Main:view
-    requirements:
-        page: \d*
-        
-m2l_list_frais:
-    path:    /view/listfrais
-    defaults:
-        _controller: M2LPagesBundle:Main:listfrais
-    requirements:
-        _methods: GET
-        
-m2l_pages_frais:
-    path:    /frais
-    defaults:
-        _controller: M2LPagesBundle:Main:frais
-    requirements:
-        page: \d*
-        
-m2l_pages_contact:
-    path:    /contact
-    defaults:
-        _controller: M2LPagesBundle:Main:contact
-    requirements:
-        page: \d+
-        
 m2l_pages_tresorier:
     path:    /tresorier
     defaults:
@@ -46,3 +18,73 @@ m2l_list_user:
         _controller: M2LPagesBundle:Admin:list
     requirements:
         _methods: GET
+        
+m2l_pages_frais:
+    path:    /frais
+    defaults:
+        _controller: M2LPagesBundle:Main:frais
+    requirements:
+        page: \d*
+        
+m2l_pages_frais_add:
+    path:    /add_frais
+    defaults:
+        _controller: M2LPagesBundle:Main:addfrais
+    requirements:
+        page: \d*
+        
+m2l_pages_frais_edit:
+    path:    /edit_frais/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:editfrais
+    requirements:
+        id: \d+
+        
+m2l_pages_frais_delete:
+    path:    /delete_frais/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:deletefrais
+    requirements:
+        id: \d+
+        
+m2l_pages_frais_validate:
+    path:    /validate_frais/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:validatefrais
+    requirements:
+        id: \d+
+        
+m2l_pages_adherent:
+    path:    /adherent
+    defaults:
+        _controller: M2LPagesBundle:Main:adherent
+    requirements:
+        page: \d*
+        
+m2l_pages_adherent_add:
+    path:    /add_adherent
+    defaults:
+        _controller: M2LPagesBundle:Main:addadherent
+    requirements:
+        page: \d*
+        
+m2l_pages_adherent_edit:
+    path:    /edit_adherent/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:editadherent
+    requirements:
+        id: \d+
+        
+m2l_pages_adherent_delete:
+    path:    /delete_adherent/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:deleteadherent
+    requirements:
+        id: \d+
+        
+m2l_pages_contact:
+    path:    /contact
+    defaults:
+        _controller: M2LPagesBundle:Main:contact
+    requirements:
+        page: \d+

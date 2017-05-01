@@ -1,0 +1,29 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form action="{{ path('m2l_pages_frais_validate', {'id': frais.id}) }}" method="POST">
+
+                <h2>Validation note de frais</h2>
+                
+                {{ form_widget(form._token) }}
+                
+                </br></br>{{ form_widget(form.validate, { 'attr': {'placeholder': 'Validation'} }) }}
+                {{ form_errors(form.validate) }}
+
+                </br>{{ form_widget(form) }}
+
+                <div>
+                    </br></br><input type="submit" id="_submit" value="Valider" />
+                </div>
+                
+            </form>
+                
+            </br><a class="link" href="{{ path('m2l_pages_tresorier') }}">Retour à l'espace trésorier</a>
+                
+        </div>
+    </div>
+
+{% endblock %}
