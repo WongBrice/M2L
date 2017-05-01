@@ -5,6 +5,20 @@ m2l_pages_home:
     requirements:
         page: \d*
         
+m2l_pages_tresorier:
+    path:    /tresorier
+    defaults:
+        _controller: M2LPagesBundle:Admin:tresorier
+    requirements:
+        page: \d+
+        
+m2l_list_user:
+    path:    /tresorier/list
+    defaults:
+        _controller: M2LPagesBundle:Admin:list
+    requirements:
+        _methods: GET
+        
 m2l_pages_frais:
     path:    /frais
     defaults:
@@ -30,6 +44,13 @@ m2l_pages_frais_delete:
     path:    /delete_frais/{id}
     defaults:
         _controller: M2LPagesBundle:Main:deletefrais
+    requirements:
+        id: \d+
+        
+m2l_pages_frais_validate:
+    path:    /validate_frais/{id}
+    defaults:
+        _controller: M2LPagesBundle:Main:validatefrais
     requirements:
         id: \d+
         
@@ -67,17 +88,3 @@ m2l_pages_contact:
         _controller: M2LPagesBundle:Main:contact
     requirements:
         page: \d+
-        
-m2l_pages_tresorier:
-    path:    /tresorier
-    defaults:
-        _controller: M2LPagesBundle:Admin:tresorier
-    requirements:
-        page: \d+
-        
-m2l_list_user:
-    path:    /tresorier/list
-    defaults:
-        _controller: M2LPagesBundle:Admin:list
-    requirements:
-        _methods: GET

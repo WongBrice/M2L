@@ -7,6 +7,8 @@
             
             <h2>Liste des notes de frais</h2>
             
+            <p>Les notes de frais non validées par le trésorier seront supprimées, merci de votre compréhension. </p>
+            
             {% for type, messages in app.session.flashBag.all %}
                 {% for message in messages %}
                     <div class="{{ type }}">
@@ -26,18 +28,20 @@
                         <td><p>Coût repas</p></td>
                         <td><p>Coût hébergement</p></td>
                         <td><p>Date saisie</p></td>
+                        <td><p>Validité</p></td>
                         <td><p>Modifier frais</p></td>
                         <td><p>Supprimer frais</p></td>
                     </tr>
                     <tr>
-                        <td>{{ frais.trajet }} </td>
-                        <td>{{ frais.motif }} </td>
-                        <td>{{ frais.km }} km </td>
-                        <td>{{ frais.cout }} € </td>
-                        <td>{{ frais.peage }} € </td>
-                        <td>{{ frais.repas }} € </td>
-                        <td>{{ frais.heberg }} € </td>
-                        <td>{{ frais.createdAt|date('d/m/Y') }} </td>
+                        <td>{{ frais.trajet }}</td>
+                        <td>{{ frais.motif }}</td>
+                        <td>{{ frais.km }} km</td>
+                        <td>{{ frais.cout }} €</td>
+                        <td>{{ frais.peage }} €</td>
+                        <td>{{ frais.repas }} €</td>
+                        <td>{{ frais.heberg }} €</td>
+                        <td>{{ frais.createdAt|date('d/m/Y') }}</td>
+                        <td>{{ frais.validate }}</td>
                         <td><a class="link" href="{{ path('m2l_pages_frais_edit', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/edit.png') }}" /></a></td>
                         <td><a class="link" href="{{ path('m2l_pages_frais_delete', {'id': frais.id}) }}"><img alt="" src="{{ asset('bundles/m2lpages/img/delete.png') }}" /></a></td>
                     </tr>

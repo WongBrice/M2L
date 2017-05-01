@@ -78,6 +78,13 @@ class Frais
     private $createdAt;
     
     /**
+     * @var array
+     *
+     * @ORM\Column(name="validate", type="array", length=255, nullable=true)
+     */
+    private $validate;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User", inversedBy="frais", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -280,6 +287,29 @@ class Frais
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    
+    /**
+     * Set validate
+     *
+     * @param array $validate
+     * @return Frais
+     */
+    public function setValidate($validate)
+    {
+        $this->validate = $validate;
+
+        return $this;
+    }
+
+    /**
+     * Get validate
+     *
+     * @return array 
+     */
+    public function getValidate()
+    {
+        return $this->validate;
     }
 
     /**

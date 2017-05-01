@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use M2L\PagesBundle\Entity\Frais;
 use M2L\PagesBundle\Entity\Adherent;
 use M2L\PagesBundle\Form\FraisType;
-use M2L\PagesBundle\Form\AdherentType;
+use M2L\PagesBundle\Form\FraisValidateType;
 use M2L\PagesBundle\Form\FraisEditType;
+use M2L\PagesBundle\Form\AdherentType;
 use M2L\PagesBundle\Form\AdherentEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -34,7 +35,8 @@ class MainController extends Controller
     public function fraisAction(Request $request) 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) || !$user instanceof UserInterface) 
+        {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
@@ -45,7 +47,8 @@ class MainController extends Controller
 
         $listFrais = $repository->findBy(array('user' => $user));
         
-        if (!$listFrais) {
+        if (!$listFrais) 
+        {
             $request->getSession()->getFlashBag()->add('notice', 'Liste vide');
         }
 
@@ -60,7 +63,8 @@ class MainController extends Controller
     public function addfraisAction(Request $request) 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) || !$user instanceof UserInterface) 
+        {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
@@ -68,7 +72,8 @@ class MainController extends Controller
 
         $form = $this->get('form.factory')->create(new FraisType(), $frais);
 
-        if ($form->handleRequest($request)->isValid()) {
+        if ($form->handleRequest($request)->isValid()) 
+        {
             
             $frais->setUser( $this->getUser() );
 
@@ -97,7 +102,8 @@ class MainController extends Controller
     {
         $form = $this->get('form.factory')->create(new FraisEditType(), $frais);
 
-        if ($form->handleRequest($request)->isValid()) {
+        if ($form->handleRequest($request)->isValid()) 
+        {
             
             $frais->setUser( $this->getUser() );
 
@@ -127,7 +133,8 @@ class MainController extends Controller
 
         $form = $this->get('form.factory')->create();
         
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) 
+        {
             
             $em->remove($frais);
             
@@ -145,12 +152,42 @@ class MainController extends Controller
     }
     
     /**
+     * Cette fonction retourne vers la vue validate_frais.html.twig, qui est une partie de la page "Espace trésorier"
+     * Elle sert également à modificer les informations persistés dans la table "frais"
+     * par le biais du formulaire qui se trouve sur la vue
+     */
+    public function validatefraisAction(Frais $frais, Request $request) 
+    {
+        $form = $this->get('form.factory')->create(new FraisValidateType(), $frais);
+
+        if ($form->handleRequest($request)->isValid()) 
+        {
+            
+            $frais->setUser( $this->getUser() );
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Note de frais validée');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_tresorier', array('id' => $frais->getId())));
+        }
+
+        return $this->render('M2LPagesBundle:Main:validate_frais.html.twig', array(
+            'frais' => $frais,
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
      * Cette fonction retourne vers la vue adherent.html.twig, qui est la page "Espace Représentant"
      */
     public function adherentAction(Request $request) 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) || !$user instanceof UserInterface) 
+        {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
@@ -161,7 +198,8 @@ class MainController extends Controller
 
         $listAdherent = $repository->findBy(array('user' => $user));
         
-        if (!$listAdherent) {
+        if (!$listAdherent) 
+        {
             $request->getSession()->getFlashBag()->add('notice', 'Liste vide');
         }
 
@@ -176,7 +214,8 @@ class MainController extends Controller
     public function addadherentAction(Request $request) 
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) || !$user instanceof UserInterface) 
+        {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
@@ -184,7 +223,8 @@ class MainController extends Controller
 
         $form = $this->get('form.factory')->create(new AdherentType(), $adherent);
 
-        if ($form->handleRequest($request)->isValid()) {
+        if ($form->handleRequest($request)->isValid()) 
+        {
             
             $adherent->setUser( $this->getUser() );
 
@@ -213,7 +253,8 @@ class MainController extends Controller
     {
         $form = $this->get('form.factory')->create(new AdherentEditType(), $adherent);
 
-        if ($form->handleRequest($request)->isValid()) {
+        if ($form->handleRequest($request)->isValid()) 
+        {
             
             $adherent->setUser( $this->getUser() );
 
@@ -243,7 +284,8 @@ class MainController extends Controller
 
         $form = $this->get('form.factory')->create();
         
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) 
+        {
             
             $em->remove($adherent);
             
