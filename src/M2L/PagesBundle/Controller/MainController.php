@@ -162,9 +162,6 @@ class MainController extends Controller
 
         if ($form->handleRequest($request)->isValid()) 
         {
-            
-            $frais->setUser( $this->getUser() );
-
             $em = $this->getDoctrine()->getManager();
 
             $em->flush();

@@ -80,7 +80,7 @@ class Frais
     /**
      * @var array
      *
-     * @ORM\Column(name="validate", type="array", length=255, nullable=true)
+     * @ORM\Column(name="validate", type="array", length=255)
      */
     private $validate;
     
@@ -93,6 +93,8 @@ class Frais
     public function __construct()
     {
         $this->createdAt = new \Datetime();
+        
+        $this->validate = 'En attente';
     }
 
     /**
@@ -287,6 +289,29 @@ class Frais
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+    
+    /**
+     * Set validate
+     *
+     * @param array $validate
+     * @return Frais
+     */
+    public function setValidate($validate)
+    {
+        $this->validate = $validate;
+
+        return $this;
+    }
+
+    /**
+     * Get validate
+     *
+     * @return array 
+     */
+    public function getValidate()
+    {
+        return $this->validate;
     }
 
     /**
