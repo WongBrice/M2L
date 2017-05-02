@@ -28,7 +28,7 @@ class AdminController extends Controller
                 ->getManager()
                 ->getRepository('M2LPagesBundle:Frais');
 
-        $listFrais = $repository->findAll(array('validate' => NULL));
+        $listFrais = $repository->findBy(array('validate' => 'En attente'));
         
         if (!$listFrais) 
         {
