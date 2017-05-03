@@ -87,6 +87,9 @@ fos_user:
     profile:
         form:
             type: m2l_user_profile
+    from_email:
+        address: "noreply@yourcompany.com"
+        sender_name: "No Reply"
     
 # Assetic Configuration
 assetic:

@@ -91,7 +91,7 @@ class User extends BaseUser
     protected $frais;
     
     /**
-     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="adh_user")
+     * @ORM\OneToMany(targetEntity="M2L\PagesBundle\Entity\Adherent", mappedBy="user")
      */
     protected $adherent;
     
