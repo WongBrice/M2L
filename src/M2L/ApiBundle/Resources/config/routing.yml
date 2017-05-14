@@ -1,0 +1,3 @@
+m2l_api_main:
+    type: rest
+    resource: M2L\ApiBundle\Controller\ApiController

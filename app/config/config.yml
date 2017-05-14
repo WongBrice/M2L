@@ -76,10 +76,12 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-# FOSUserBundle Configuration
+# FOSUserBundle, FosRestBundle and FosOAUTHServerBundle Configuration
+nelmio_api_doc: ~
+
 fos_user:
     db_driver:     orm
-    firewall_name: main
+    firewall_name: api
     user_class:    M2L\UserBundle\Entity\User
     registration:
         form:
@@ -90,6 +92,20 @@ fos_user:
     from_email:
         address: "noreply@yourcompany.com"
         sender_name: "No Reply"
+        
+fos_rest:
+    routing_loader:
+        default_format: json
+        include_format: false
+        
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        M2L\ApiBundle\Entity\Client
+    access_token_class:  M2L\ApiBundle\Entity\AccessToken
+    refresh_token_class: M2L\ApiBundle\Entity\RefreshToken
+    auth_code_class:     M2L\ApiBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_manager
     
 # Assetic Configuration
 assetic:

@@ -3,11 +3,12 @@
 namespace M2L\UserBundle\Controller;
 
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends BaseController 
 {
-
-    public function registerAction() {
+    public function registerAction(Request $request) 
+    {
         $response = parent::registerAction();
 
         return $response;
