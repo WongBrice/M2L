@@ -20,16 +20,10 @@ security:
         api:
             pattern: ^/
             fos_oauth: true
-            stateless: true
-            anonymous: false 
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|img|js)/
-            security: false
-        main:
-            pattern: ^/
-            anonymous: true
-            provider: fos_userbundle
+            stateless: false
+            anonymous: true 
             form_login:
+                provider: fos_userbundle
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
                 remember_me: true
@@ -41,7 +35,9 @@ security:
                 lifetime: 31536000
                 always_remember_me: true
             switch_user: { role: ROLE_ADMIN }
-                
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|img|js)/
+            security: false
     access_control:
             - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }

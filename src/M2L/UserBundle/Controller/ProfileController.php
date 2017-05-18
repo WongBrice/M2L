@@ -9,7 +9,7 @@ class ProfileController extends BaseController
 {
     public function editAction(Request $request)
     {
-        $response = parent::editAction();
+        $response = parent::editAction($request);
 
         return $response;
     }

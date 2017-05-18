@@ -9,7 +9,7 @@ class RegistrationController extends BaseController
 {
     public function registerAction(Request $request) 
     {
-        $response = parent::registerAction();
+        $response = parent::registerAction($request);
 
         return $response;
     }

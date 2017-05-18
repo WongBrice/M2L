@@ -9,7 +9,6 @@ class ApiController extends FOSRestController
 {
     public function getApiAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
         $data = array("hello" => "world");
         $view = $this->view($data);
         return $this->handleView($view);

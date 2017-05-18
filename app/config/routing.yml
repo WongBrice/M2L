@@ -1,5 +1,5 @@
-m2_l_api:
-    resource: "@M2LApiBundle/Resources/config/routing.xml"
+m2l_api:
+    resource: "@M2LApiBundle/Resources/config/routing.yml"
     prefix:   /
 
 m2l_pages:
@@ -12,6 +12,9 @@ NelmioApiDocBundle:
 
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+    
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
     
 fos_user_security:
     resource: "@M2LUserBundle/Resources/config/routing/security.xml"
