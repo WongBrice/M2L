@@ -7,8 +7,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ApiController extends FOSRestController
 {
-    public function getApiAction()
+    public function getTestAction()
     {
+        $user = $this->get('security.context')->getToken()->getUser();
         $data = array("hello" => "world");
         $view = $this->view($data);
         return $this->handleView($view);
