@@ -105,7 +105,7 @@ fos_oauth_server:
     refresh_token_class: M2L\ApiBundle\Entity\RefreshToken
     auth_code_class:     M2L\ApiBundle\Entity\AuthCode
     service:
-        user_provider: fos_user.user_provider
+        user_provider: fos_user.user_provider.username_email
     
 # Assetic Configuration
 assetic:
