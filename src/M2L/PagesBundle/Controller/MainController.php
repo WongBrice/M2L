@@ -5,11 +5,13 @@ namespace M2L\PagesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use M2L\PagesBundle\Entity\Frais;
 use M2L\PagesBundle\Entity\Adherent;
+use M2L\PagesBundle\Entity\Contact;
 use M2L\PagesBundle\Form\FraisType;
 use M2L\PagesBundle\Form\FraisValidateType;
 use M2L\PagesBundle\Form\FraisEditType;
 use M2L\PagesBundle\Form\AdherentType;
 use M2L\PagesBundle\Form\AdherentEditType;
+use M2L\PagesBundle\Form\ContactType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
@@ -104,7 +106,6 @@ class MainController extends Controller
 
         if ($form->handleRequest($request)->isValid()) 
         {
-            
             $frais->setUser( $this->getUser() );
 
             $em = $this->getDoctrine()->getManager();
@@ -135,7 +136,6 @@ class MainController extends Controller
         
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) 
         {
-            
             $em->remove($frais);
             
             $em->flush();
@@ -222,7 +222,6 @@ class MainController extends Controller
 
         if ($form->handleRequest($request)->isValid()) 
         {
-            
             $adherent->setUser( $this->getUser() );
 
             $em = $this->getDoctrine()->getManager();
@@ -252,7 +251,6 @@ class MainController extends Controller
 
         if ($form->handleRequest($request)->isValid()) 
         {
-            
             $adherent->setUser( $this->getUser() );
 
             $em = $this->getDoctrine()->getManager();
@@ -283,7 +281,6 @@ class MainController extends Controller
         
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) 
         {
-            
             $em->remove($adherent);
             
             $em->flush();
@@ -302,8 +299,35 @@ class MainController extends Controller
     /**
      * Cette fonction retourne vers la vue contact.html.twig, qui est la page "Contact"
      */
-    public function contactAction() 
+    public function contactAction(Request $request) 
     {
-        return $this->render('M2LPagesBundle:Main:contact.html.twig');
+        $contact = new Contact();
+
+        $form = $this->get('form.factory')->create(new ContactType(), $contact);
+
+        if ($form->handleRequest($request)->isValid()) 
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($contact);
+
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Votre message a bien été envoyé. Il sera traité dans les plus brefs délais.');
+            
+            return $this->redirect($this->generateUrl('m2l_pages_contact_success', array('id' => $contact->getId())));
+        }
+
+        return $this->render('M2LPagesBundle:Main:contact.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    
+    /**
+     * Cette fonction retourne vers la vue contact_success.html.twig, qui est la page "Contact"
+     */
+    public function contactsuccessAction() 
+    {
+        return $this->render('M2LPagesBundle:Main:contact_success.html.twig');
     }
 }

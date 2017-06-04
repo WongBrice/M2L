@@ -5,6 +5,20 @@ m2l_pages_home:
     requirements:
         page: \d*
         
+m2l_pages_admin:
+    path:    /admin
+    defaults:
+        _controller: M2LPagesBundle:Admin:admin
+    requirements:
+        page: \d+
+        
+m2l_message_admin:
+    path:    /admin/message
+    defaults:
+        _controller: M2LPagesBundle:Admin:message
+    requirements:
+        _methods: GET
+
 m2l_pages_tresorier:
     path:    /tresorier
     defaults:
@@ -86,5 +100,12 @@ m2l_pages_contact:
     path:    /contact
     defaults:
         _controller: M2LPagesBundle:Main:contact
+    requirements:
+        page: \d+
+        
+m2l_pages_contact_success:
+    path:    /contact_success
+    defaults:
+        _controller: M2LPagesBundle:Main:contactsuccess
     requirements:
         page: \d+

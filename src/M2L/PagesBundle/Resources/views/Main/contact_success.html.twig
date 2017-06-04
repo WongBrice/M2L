@@ -1,0 +1,19 @@
+{% extends 'M2LPagesBundle::layout.html.twig' %}
+
+{% block body %}
+
+        <div class="jumbotron">
+            <div class="container">
+                
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="{{ type }}">
+                        {{ message|trans({}, 'M2LPagesBundle') }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+                
+            </div>
+        </div>
+
+{% endblock %}

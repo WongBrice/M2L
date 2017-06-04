@@ -5,7 +5,29 @@
         <div class="jumbotron">
             <div class="container">
                 
-                <h2>En cours de construction...</h2>
+                <form action="{{ path('m2l_pages_contact') }}" method="POST">
+
+                <h2>Nous contacter</h2>
+                
+                </br></br>{{ form_widget(form.name, { 'attr': {'placeholder': 'Nom et Prénom'} }) }}
+                {{ form_errors(form.name) }}
+                
+                </br></br>{{ form_widget(form.email, { 'attr': {'placeholder': 'Email'} }) }}
+                {{ form_errors(form.email) }}
+
+                </br></br>{{ form_widget(form.subject, { 'attr': {'placeholder': 'Objet'} }) }}
+                {{ form_errors(form.subject) }}
+                
+                </br></br>{{ form_widget(form.content, { 'attr': {'placeholder': 'Message...'} }) }}
+                {{ form_errors(form.content) }}
+
+                {{ form_widget(form) }}
+
+                <div>
+                    </br></br><input type="submit" id="_submit" value="Envoyer" />
+                </div>
+                
+            </form>
                 
             </div>
         </div>

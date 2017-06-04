@@ -37,7 +37,18 @@ class AdminController extends Controller
 
         return $this->render('M2LPagesBundle:Main:tresorier.html.twig', array('listFrais' => $listFrais));
     }
-
+    
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     * Cette annotation "@Security" sert à restreindre l'accès à la fonction
+     * à ceux qui ne possèdent pas le role "ROLE_ADMIN".
+     * Cette fonction retourne vers la vue admin.html.twig, qui est la page "Message admin"
+     */
+    public function adminAction(Request $request) 
+    {
+        return $this->render('M2LPagesBundle:Main:admin.html.twig');
+    }
+    
     /**
      * @Security("has_role('ROLE_TRESORIER')")
      * Cette fonction sert à récupérer les informations de la table "user"
@@ -78,6 +89,46 @@ class AdminController extends Controller
                 'phone' => $user->getPhone(),
                 'licence' => $user->getLicence(),
                 'ligue' => $user->getLigue(),
+            ];
+        }
+
+        return new Response(json_encode($output), 200, ['Content-Type' => 'application/json']);
+    }
+    
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     * Cette fonction sert à récupérer les informations de la table "contact"
+     * pour les afficher sur la vue tresorier de la page "Message admin" en ajax
+     */
+    public function messageAction(Request $request) 
+    {
+        $length = $request->get('length');
+        $length = $length && ($length != -1) ? $length : 0;
+
+        $start = $request->get('start');
+        $start = $length ? ($start && ($start != -1) ? $start : 0) / $length : 0;
+
+        $search = $request->get('search');
+        $filters = ['query' => @$search['value']];
+
+        $contact = $this->getDoctrine()->getRepository('M2LPagesBundle:Contact')->search(
+                $filters, $start, $length
+        );
+
+        $output = array(
+            'data' => array(),
+            'recordsFiltered' => count($this->getDoctrine()->getRepository('M2LPagesBundle:Contact')->search($filters, 0, false)),
+            'recordsTotal' => count($this->getDoctrine()->getRepository('M2LPagesBundle:Contact')->search(array(), 0, false))
+        );
+
+        foreach ($contact as $contact) 
+        {
+            $output['data'][] = [
+                'name' => $contact->getName(),
+                'email' => $contact->getEmail(),
+                'subject' => $contact->getSubject(),
+                'content' => $contact->getContent(),
+                'createdAt' => $contact->getCreatedAt()->format('Y-m-d'),
             ];
         }
 
