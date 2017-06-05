@@ -17,8 +17,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 
 /**
- * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
- * et à ceux possédant le role "ROLE_ADMIN".
+ * Ceci est le controller qui contiendra les fonctions dédiées à toutes les pages
+ * du site web.
  */
 class MainController extends Controller 
 {

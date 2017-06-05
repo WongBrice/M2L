@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier
- * et à ceux possédant le role "ROLE_TRESORIER".
+ * Ceci est le controller qui contiendra les fonctions dédiées à l'espace trésorier et admin
+ * et à ceux possédant le role "ROLE_TRESORIER" et "ROLE_ADMIN".
  */
 class AdminController extends Controller 
 {

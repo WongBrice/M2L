@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
+ * Voici la classe qui donnera la table User.
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="M2L\UserBundle\Repository\UserRepository")

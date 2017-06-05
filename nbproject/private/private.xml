@@ -6,12 +6,11 @@
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/index.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/ApiBundle/Controller/ApiController.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/frais.html.twig</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Entity/Contact.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/tresorier.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Controller/MainController.php</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/Main/admin.html.twig</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Controller/AdminController.php</file>
-            <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Repository/ContactRepository.php</file>
+            <file>file:/C:/wamp64/www/M2L/app/config/security.yml</file>
             <file>file:/C:/wamp64/www/M2L/src/M2L/PagesBundle/Resources/views/layout.html.twig</file>
         </group>
     </open-files>

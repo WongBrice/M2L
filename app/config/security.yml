@@ -20,7 +20,7 @@ security:
         api:
             pattern: ^/
             fos_oauth: true
-            stateless: true
+            stateless: false
             anonymous: true
             form_login:
                 provider: fos_userbundle

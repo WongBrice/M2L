@@ -6,7 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Frais
- *
+ * Voici la classe qui donnera la table Frais.
+ * 
  * @ORM\Table(name="frais")
  * @ORM\Entity(repositoryClass="M2L\PagesBundle\Repository\FraisRepository")
  */

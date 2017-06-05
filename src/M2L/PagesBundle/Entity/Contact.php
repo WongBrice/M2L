@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * Contact
+ * Voici la classe qui donnera la table Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="M2L\PagesBundle\Repository\ContactRepository")

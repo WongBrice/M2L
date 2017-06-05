@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\AuthCode as BaseAuthCode;
 
 /**
+ * AuthCode
+ * Voici la classe qui donnera la table AuthCode.
+ * 
  * @ORM\Table("oauth2_auth_code")
  * @ORM\Entity
  */

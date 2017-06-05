@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\Client as BaseClient;
 
 /**
+ * Client
+ * Voici la classe qui donnera la table Client.
+ * 
  * @ORM\Table("oauth2_client")
  * @ORM\Entity
  */

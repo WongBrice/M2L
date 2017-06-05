@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\RefreshToken as BaseRefreshToken;
 
 /**
+ * RefreshToken
+ * Voici la classe qui donnera la table RefreshToken.
+ * 
  * @ORM\Table("oauth2_refresh_token")
  * @ORM\Entity
  */

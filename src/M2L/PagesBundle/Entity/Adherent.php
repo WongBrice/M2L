@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adherent
+ * Voici la classe qui donnera la table Adherent.
  *
  * @ORM\Table(name="adherent")
  * @ORM\Entity(repositoryClass="M2L\PagesBundle\Repository\AdherentRepository")
