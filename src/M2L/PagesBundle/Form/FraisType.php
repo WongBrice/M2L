@@ -8,6 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+/*
+ * Cette classe permet d'avoir l'interface de formulaire
+ * pour la vue de saisie des frais.
+ */
 class FraisType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

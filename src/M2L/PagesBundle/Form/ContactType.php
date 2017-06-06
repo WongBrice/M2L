@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/*
+ * Cette classe permet d'avoir l'interface de formulaire
+ * pour la vue du service de contact.
+ */
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

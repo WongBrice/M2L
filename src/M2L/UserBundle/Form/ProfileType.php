@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/*
+ * Cette classe permet d'avoir l'interface de formulaire
+ * pour la vue de modification du profil.
+ */
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -43,6 +47,10 @@ class ProfileType extends AbstractType
         ));
     }
     
+    /*
+     * Cette fonction est surchargée depuis FOSUserBundle
+     * en raison des ajouts apportés à la fonction mère.
+     */
     public function getParent()
     {
         return 'fos_user_profile';

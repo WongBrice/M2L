@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/*
+ * Cette classe permet d'avoir l'interface de formulaire
+ * pour la vue de l'inscription.
+ */
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -54,6 +58,10 @@ class RegistrationType extends AbstractType
         ));
     }
 
+    /*
+     * Cette fonction est surchargée depuis FOSUserBundle
+     * en raison des ajouts apportés à la fonction mère.
+     */
     public function getParent()
     {
         return 'fos_user_registration';
