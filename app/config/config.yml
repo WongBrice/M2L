@@ -83,12 +83,20 @@ fos_user:
     db_driver:     orm
     firewall_name: api
     user_class:    M2L\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
     registration:
         form:
             type: m2l_user_registration
     profile:
         form:
             type: m2l_user_profile
+    resetting:
+        email:
+            template:   M2LUserBundle:Resetting:email.txt.twig
+            from_email:
+                address:        resetting@example.com
+                sender_name:    Admin du site
     from_email:
         address: "noreply@yourcompany.com"
         sender_name: "No Reply"
